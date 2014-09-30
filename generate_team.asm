@@ -1,3 +1,6 @@
+;TODO: Reformat the tmhm list
+
+
 GenerateTeam:
 	call ResetRNs
 
@@ -225,7 +228,7 @@ GenMoves:
 
 .nextBit	
 	bit 0, a
-	call z, copyTMHM ; was that bit set? if so, copy the move to the array
+	call z, CopyTMHM ; was that bit set? if so, copy the move to the array
 	srl a ; move to next TMHM (next bit)
 	dec d
 	jr nz, .nextBit
@@ -259,7 +262,7 @@ GenMoves:
 .ok	
 .again1
 	call Random2
-	and $1f
+	and $7f ; stupid Mew learning over 63 moves...
 	ld hl, wBattle
 	ld d, 0
 	ld e, a
@@ -274,7 +277,7 @@ GenMoves:
 	
 .again2	
 	call Random2
-	and $1f
+	and $7f
 	ld hl, wBattle
 	ld d, 0
 	ld e, a
@@ -294,7 +297,7 @@ GenMoves:
 	
 .again3	
 	call Random2
-	and $1f
+	and $7f
 	ld hl, wBattle
 	ld d, 0
 	ld e, a
@@ -317,7 +320,7 @@ GenMoves:
 
 .again4	
 	call Random2
-	and $1f
+	and $7f
 	ld hl, wBattle
 	ld d, 0
 	ld e, a
@@ -498,6 +501,12 @@ IsSpecialCase:
 	ret
 	
 	
+CopyTMHM:
+; current move is at 72 - (e * 8 + d)	
+	
+	; stuff
+	ret	
+	
 TMHMList:
 db	DYNAMICPUNCH
 db	HEADBUTT
@@ -556,6 +565,10 @@ db	STRENGTH
 db	FLASH
 db	WHIRLPOOL
 db	WATERFALL
+	db FLAMETHROWER?
+	db ICE_BEAM?
+	db THUNDERBOLD?
+	db 0, 0, 0, 0
 
 
 
