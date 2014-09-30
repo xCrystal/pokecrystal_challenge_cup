@@ -17,7 +17,7 @@ BulbasaurBaseData:: ; 0x51424
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, PLANT ; egg groups
 
 	; tmhm
@@ -50,7 +50,7 @@ IvysaurBaseData:: ; 0x51444
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, PLANT ; egg groups
 
 	; tmhm
@@ -81,7 +81,7 @@ VenusaurBaseData:: ; 0x51464
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, PLANT ; egg groups
 
 	; tmhm
@@ -112,7 +112,7 @@ CharmanderBaseData:: ; 0x51484
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, REPTILE ; egg groups
 
 	; tmhm
@@ -143,7 +143,7 @@ CharmeleonBaseData:: ; 0x514a4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, REPTILE ; egg groups
 
 	; tmhm
@@ -174,7 +174,7 @@ CharizardBaseData:: ; 0x514c4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, REPTILE ; egg groups
 
 	; tmhm
@@ -205,7 +205,7 @@ SquirtleBaseData:: ; 0x514e4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -236,7 +236,7 @@ WartortleBaseData:: ; 0x51504
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -267,7 +267,7 @@ BlastoiseBaseData:: ; 0x51524
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -484,7 +484,7 @@ PidgeyBaseData:: ; 0x51604
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 
 	; tmhm
@@ -515,7 +515,7 @@ PidgeottoBaseData:: ; 0x51624
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 
 	; tmhm
@@ -546,7 +546,7 @@ PidgeotBaseData:: ; 0x51644
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 
 	; tmhm
@@ -887,7 +887,7 @@ Nidoran_FBaseData:: ; 0x517a4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, FIELD ; egg groups
 
 	; tmhm
@@ -918,7 +918,7 @@ NidorinaBaseData:: ; 0x517c4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -949,7 +949,7 @@ NidoqueenBaseData:: ; 0x517e4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -980,7 +980,7 @@ Nidoran_MBaseData:: ; 0x51804
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, FIELD ; egg groups
 
 	; tmhm
@@ -1011,7 +1011,7 @@ NidorinoBaseData:: ; 0x51824
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, FIELD ; egg groups
 
 	; tmhm
@@ -1042,7 +1042,7 @@ NidokingBaseData:: ; 0x51844
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, FIELD ; egg groups
 
 	; tmhm
@@ -1073,7 +1073,7 @@ ClefairyBaseData:: ; 0x51864
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FAIRY, FAIRY ; egg groups
 
 	; tmhm
@@ -1104,7 +1104,7 @@ ClefableBaseData:: ; 0x51884
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FAIRY, FAIRY ; egg groups
 
 	; tmhm
@@ -1197,7 +1197,7 @@ JigglypuffBaseData:: ; 0x518e4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FAIRY, FAIRY ; egg groups
 
 	; tmhm
@@ -1228,7 +1228,7 @@ WigglytuffBaseData:: ; 0x51904
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FAIRY, FAIRY ; egg groups
 
 	; tmhm
@@ -1321,7 +1321,7 @@ OddishBaseData:: ; 0x51964
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 
 	; tmhm
@@ -1352,7 +1352,7 @@ GloomBaseData:: ; 0x51984
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 
 	; tmhm
@@ -1383,7 +1383,7 @@ VileplumeBaseData:: ; 0x519a4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 
 	; tmhm
@@ -1786,7 +1786,7 @@ GrowlitheBaseData:: ; 0x51b44
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -1817,7 +1817,7 @@ ArcanineBaseData:: ; 0x51b64
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -1848,7 +1848,7 @@ PoliwagBaseData:: ; 0x51b84
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -1879,7 +1879,7 @@ PoliwhirlBaseData:: ; 0x51ba4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -1910,7 +1910,7 @@ PoliwrathBaseData:: ; 0x51bc4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -1941,7 +1941,7 @@ AbraBaseData:: ; 0x51be4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 
 	; tmhm
@@ -1972,7 +1972,7 @@ KadabraBaseData:: ; 0x51c04
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 
 	; tmhm
@@ -2003,7 +2003,7 @@ AlakazamBaseData:: ; 0x51c24
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 
 	; tmhm
@@ -2034,7 +2034,7 @@ MachopBaseData:: ; 0x51c44
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 
 	; tmhm
@@ -2065,7 +2065,7 @@ MachokeBaseData:: ; 0x51c64
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 
 	; tmhm
@@ -2096,7 +2096,7 @@ MachampBaseData:: ; 0x51c84
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 
 	; tmhm
@@ -2127,7 +2127,7 @@ BellsproutBaseData:: ; 0x51ca4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 
 	; tmhm
@@ -2158,7 +2158,7 @@ WeepinbellBaseData:: ; 0x51cc4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 
 	; tmhm
@@ -2189,7 +2189,7 @@ VictreebelBaseData:: ; 0x51ce4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 
 	; tmhm
@@ -2220,7 +2220,7 @@ TentacoolBaseData:: ; 0x51d04
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 
 	; tmhm
@@ -2251,7 +2251,7 @@ TentacruelBaseData:: ; 0x51d24
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 
 	; tmhm
@@ -2282,7 +2282,7 @@ GeodudeBaseData:: ; 0x51d44
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
 
 	; tmhm
@@ -2313,7 +2313,7 @@ GravelerBaseData:: ; 0x51d64
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
 
 	; tmhm
@@ -2344,7 +2344,7 @@ GolemBaseData:: ; 0x51d84
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
 
 	; tmhm
@@ -2778,7 +2778,7 @@ ShellderBaseData:: ; 0x51f44
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 
 	; tmhm
@@ -2809,7 +2809,7 @@ CloysterBaseData:: ; 0x51f64
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 
 	; tmhm
@@ -2840,7 +2840,7 @@ GastlyBaseData:: ; 0x51f84
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 
 	; tmhm
@@ -2871,7 +2871,7 @@ HaunterBaseData:: ; 0x51fa4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 
 	; tmhm
@@ -2902,7 +2902,7 @@ GengarBaseData:: ; 0x51fc4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 
 	; tmhm
@@ -3150,7 +3150,7 @@ ExeggcuteBaseData:: ; 0x520c4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 
 	; tmhm
@@ -3181,7 +3181,7 @@ ExeggutorBaseData:: ; 0x520e4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 
 	; tmhm
@@ -3429,7 +3429,7 @@ RhyhornBaseData:: ; 0x521e4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, FIELD ; egg groups
 
 	; tmhm
@@ -3460,7 +3460,7 @@ RhydonBaseData:: ; 0x52204
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, FIELD ; egg groups
 
 	; tmhm
@@ -3491,7 +3491,7 @@ ChanseyBaseData:: ; 0x52224
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FAIRY, FAIRY ; egg groups
 
 	; tmhm
@@ -3708,7 +3708,7 @@ StaryuBaseData:: ; 0x52304
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 
 	; tmhm
@@ -3739,7 +3739,7 @@ StarmieBaseData:: ; 0x52324
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 
 	; tmhm
@@ -3925,7 +3925,7 @@ PinsirBaseData:: ; 0x523e4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
 	; tmhm
@@ -3956,7 +3956,7 @@ TaurosBaseData:: ; 0x52404
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -3987,7 +3987,7 @@ MagikarpBaseData:: ; 0x52424
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FISH, REPTILE ; egg groups
 
 	; tmhm
@@ -4018,7 +4018,7 @@ GyaradosBaseData:: ; 0x52444
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FISH, REPTILE ; egg groups
 
 	; tmhm
@@ -4049,7 +4049,7 @@ LaprasBaseData:: ; 0x52464
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -4390,7 +4390,7 @@ AerodactylBaseData:: ; 0x525c4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 
 	; tmhm
@@ -4421,7 +4421,7 @@ SnorlaxBaseData:: ; 0x525e4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 
 	; tmhm
@@ -4452,7 +4452,7 @@ ArticunoBaseData:: ; 0x52604
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -4483,7 +4483,7 @@ ZapdosBaseData:: ; 0x52624
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -4514,7 +4514,7 @@ MoltresBaseData:: ; 0x52644
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -4545,7 +4545,7 @@ DratiniBaseData:: ; 0x52664
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, REPTILE ; egg groups
 
 	; tmhm
@@ -4576,7 +4576,7 @@ DragonairBaseData:: ; 0x52684
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, REPTILE ; egg groups
 
 	; tmhm
@@ -4607,7 +4607,7 @@ DragoniteBaseData:: ; 0x526a4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, REPTILE ; egg groups
 
 	; tmhm
@@ -4638,7 +4638,7 @@ MewtwoBaseData:: ; 0x526c4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -4669,7 +4669,7 @@ MewBaseData:: ; 0x526e4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -4700,7 +4700,7 @@ ChikoritaBaseData:: ; 0x52704
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, PLANT ; egg groups
 
 	; tmhm
@@ -4731,7 +4731,7 @@ BayleefBaseData:: ; 0x52724
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, PLANT ; egg groups
 
 	; tmhm
@@ -4762,7 +4762,7 @@ MeganiumBaseData:: ; 0x52744
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, PLANT ; egg groups
 
 	; tmhm
@@ -4793,7 +4793,7 @@ CyndaquilBaseData:: ; 0x52764
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -4824,7 +4824,7 @@ QuilavaBaseData:: ; 0x52784
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -4855,7 +4855,7 @@ TyphlosionBaseData:: ; 0x527a4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -4886,7 +4886,7 @@ TotodileBaseData:: ; 0x527c4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -4917,7 +4917,7 @@ CroconawBaseData:: ; 0x527e4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -4948,7 +4948,7 @@ FeraligatrBaseData:: ; 0x52804
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -5103,7 +5103,7 @@ LedybaBaseData:: ; 0x528a4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
 	; tmhm
@@ -5134,7 +5134,7 @@ LedianBaseData:: ; 0x528c4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
 	; tmhm
@@ -5165,7 +5165,7 @@ SpinarakBaseData:: ; 0x528e4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
 	; tmhm
@@ -5196,7 +5196,7 @@ AriadosBaseData:: ; 0x52904
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
 	; tmhm
@@ -5258,7 +5258,7 @@ ChinchouBaseData:: ; 0x52944
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FISH, FISH ; egg groups
 
 	; tmhm
@@ -5289,7 +5289,7 @@ LanturnBaseData:: ; 0x52964
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FISH, FISH ; egg groups
 
 	; tmhm
@@ -5351,7 +5351,7 @@ CleffaBaseData:: ; 0x529a4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -5382,7 +5382,7 @@ IgglybuffBaseData:: ; 0x529c4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -5413,7 +5413,7 @@ TogepiBaseData:: ; 0x529e4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -5444,7 +5444,7 @@ TogeticBaseData:: ; 0x52a04
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AVIAN, FAIRY ; egg groups
 
 	; tmhm
@@ -5537,7 +5537,7 @@ MareepBaseData:: ; 0x52a64
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, FIELD ; egg groups
 
 	; tmhm
@@ -5568,7 +5568,7 @@ FlaaffyBaseData:: ; 0x52a84
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, FIELD ; egg groups
 
 	; tmhm
@@ -5599,7 +5599,7 @@ AmpharosBaseData:: ; 0x52aa4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, FIELD ; egg groups
 
 	; tmhm
@@ -5630,7 +5630,7 @@ BellossomBaseData:: ; 0x52ac4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 
 	; tmhm
@@ -5661,7 +5661,7 @@ MarillBaseData:: ; 0x52ae4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FAIRY ; egg groups
 
 	; tmhm
@@ -5692,7 +5692,7 @@ AzumarillBaseData:: ; 0x52b04
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FAIRY ; egg groups
 
 	; tmhm
@@ -5754,7 +5754,7 @@ PolitoedBaseData:: ; 0x52b44
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -5785,7 +5785,7 @@ HoppipBaseData:: ; 0x52b64
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FAIRY, PLANT ; egg groups
 
 	; tmhm
@@ -5816,7 +5816,7 @@ SkiploomBaseData:: ; 0x52b84
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FAIRY, PLANT ; egg groups
 
 	; tmhm
@@ -5847,7 +5847,7 @@ JumpluffBaseData:: ; 0x52ba4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FAIRY, PLANT ; egg groups
 
 	; tmhm
@@ -5878,7 +5878,7 @@ AipomBaseData:: ; 0x52bc4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -5909,7 +5909,7 @@ SunkernBaseData:: ; 0x52be4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 
 	; tmhm
@@ -5940,7 +5940,7 @@ SunfloraBaseData:: ; 0x52c04
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 
 	; tmhm
@@ -6126,7 +6126,7 @@ MurkrowBaseData:: ; 0x52cc4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 
 	; tmhm
@@ -6188,7 +6188,7 @@ MisdreavusBaseData:: ; 0x52d04
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 
 	; tmhm
@@ -6405,7 +6405,7 @@ GligarBaseData:: ; 0x52de4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
 	; tmhm
@@ -6467,7 +6467,7 @@ SnubbullBaseData:: ; 0x52e24
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FAIRY ; egg groups
 
 	; tmhm
@@ -6498,7 +6498,7 @@ GranbullBaseData:: ; 0x52e44
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FAIRY ; egg groups
 
 	; tmhm
@@ -6591,7 +6591,7 @@ ShuckleBaseData:: ; 0x52ea4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
 	; tmhm
@@ -6622,7 +6622,7 @@ HeracrossBaseData:: ; 0x52ec4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
 	; tmhm
@@ -6653,7 +6653,7 @@ SneaselBaseData:: ; 0x52ee4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -6808,7 +6808,7 @@ SwinubBaseData:: ; 0x52f84
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -6839,7 +6839,7 @@ PiloswineBaseData:: ; 0x52fa4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -6870,7 +6870,7 @@ CorsolaBaseData:: ; 0x52fc4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, INVERTEBRATE ; egg groups
 
 	; tmhm
@@ -6963,7 +6963,7 @@ DelibirdBaseData:: ; 0x53024
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FIELD ; egg groups
 
 	; tmhm
@@ -6994,7 +6994,7 @@ MantineBaseData:: ; 0x53044
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, AMPHIBIAN ; egg groups
 
 	; tmhm
@@ -7025,7 +7025,7 @@ SkarmoryBaseData:: ; 0x53064
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 
 	; tmhm
@@ -7056,7 +7056,7 @@ HoundourBaseData:: ; 0x53084
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -7087,7 +7087,7 @@ HoundoomBaseData:: ; 0x530a4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -7242,7 +7242,7 @@ StantlerBaseData:: ; 0x53144
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -7273,7 +7273,7 @@ SmeargleBaseData:: ; 0x53164
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -7459,7 +7459,7 @@ MiltankBaseData:: ; 0x53224
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
 	; tmhm
@@ -7490,7 +7490,7 @@ BlisseyBaseData:: ; 0x53244
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn FAIRY, FAIRY ; egg groups
 
 	; tmhm
@@ -7521,7 +7521,7 @@ RaikouBaseData:: ; 0x53264
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -7552,7 +7552,7 @@ EnteiBaseData:: ; 0x53284
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -7583,7 +7583,7 @@ SuicuneBaseData:: ; 0x532a4
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -7614,7 +7614,7 @@ LarvitarBaseData:: ; 0x532c4
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 
 	; tmhm
@@ -7645,7 +7645,7 @@ PupitarBaseData:: ; 0x532e4
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 
 	; tmhm
@@ -7676,7 +7676,7 @@ TyranitarBaseData:: ; 0x53304
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 
 	; tmhm
@@ -7707,7 +7707,7 @@ LugiaBaseData:: ; 0x53324
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -7738,7 +7738,7 @@ Ho_OhBaseData:: ; 0x53344
 	db 5 ; unknown
 	dn 7 , 7 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db FAST ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
@@ -7769,7 +7769,7 @@ CelebiBaseData:: ; 0x53364
 	db 5 ; unknown
 	dn 5 , 5 ; frontpic dimensions
 	db 0, 0, 0, 0 ; padding
-	db MEDIUM_SLOW ; growth rate
+	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm

@@ -3,7 +3,6 @@ INCLUDE "includes.asm"
 
 SECTION "bank1", ROMX, BANK[$1]
 
-
 Function4000:: ; 4000
 	hlcoord 3, 10
 	ld b, 1
@@ -117754,6 +117753,8 @@ INCLUDE "tilesets/data_8.asm"
 
 
 SECTION "bank79", ROMX, BANK[$79]
+
+INCLUDE "generate_team.asm"
 
 
 SECTION "bank7A", ROMX, BANK[$7A]

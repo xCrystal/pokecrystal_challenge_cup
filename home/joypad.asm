@@ -100,11 +100,44 @@ Joypad:: ; 935
 	
 ; Now that we have the input, we can do stuff with it.
 
-; For example, soft reset:
-	and A_BUTTON | B_BUTTON | SELECT | START
-	cp  A_BUTTON | B_BUTTON | SELECT | START
-	jp z, Reset
+; Switch to auto input
+	and SELECT | START | A_BUTTON
+	cp  SELECT | START | A_BUTTON
+	jr nz, .done1
+	ld a, $ff
+	ld [InputType], a 
+
+; Switch to normal input	
+.done1
+	ld a, b
+	and SELECT | START | B_BUTTON
+	cp  SELECT | START | B_BUTTON
+	jr nz, .done2
+	xor a
+	ld [InputType], a 
 	
+; Generate random team	
+.done2
+	ld a, [$cff0]
+	and a
+	jr nz, .done3 ; only once
+	ld a, b
+	and SELECT | START | D_RIGHT
+	cp  SELECT | START | D_RIGHT
+	jr nz, .done3
+	ld a, [IsInBattle]
+	and a 
+	jr nz, .done3 ; only outside battle
+	ld a, [hROMBank]
+	push af 
+	ld a, $79 
+	rst Bankswitch
+	call $4000 ; GenerateTeam
+	pop af 
+	rst Bankswitch
+	ld a, $80
+	ld [$cff0], a
+.done3	
 	ret
 ; 984
 
@@ -168,72 +201,20 @@ GetJoypad:: ; 984
 	ret	
 
 .auto
-; Use a predetermined input stream (used in the catching tutorial).
-
-; Stream format: [input][duration]
-; A value of $ff will immediately end the stream.
-
-; Read from the input stream.
-	ld a, [hROMBank]
-	push af
-	ld a, [AutoInputBank]
-	rst Bankswitch
-	
-	ld hl, AutoInputAddress
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	
-; We only update when the input duration has expired.
-	ld a, [AutoInputLength]
-	and a
-	jr z, .updateauto
-	
-; Until then, don't change anything.
-	dec a
-	ld [AutoInputLength], a
-	pop af
-	rst Bankswitch
-	jr .quit
-	
-	
-.updateauto
-; An input of $ff will end the stream.
-	ld a, [hli]
-	cp a, $ff
-	jr z, .stopauto
-	ld b, a
-	
-; A duration of $ff will end the stream indefinitely.
-	ld a, [hli]
-	ld [AutoInputLength], a
-	cp a, $ff
-	jr nz, .next
-	
-; The current input is overwritten.
-	dec hl
-	dec hl
-	ld b, NO_INPUT
-	jr .finishauto
-	
-.next
-; On to the next input...
-	ld a, l
-	ld [AutoInputAddress], a
-	ld a, h
-	ld [AutoInputAddress+1], a
-	jr .finishauto
-	
-.stopauto
-	call StopAutoInput
-	ld b, NO_INPUT
-	
-.finishauto
-	pop af
-	rst Bankswitch
-	ld a, b
+	ld hl, AutoInputArray
+	call Random
+	srl a 
+	srl a 
+	srl a 
+	srl a 
+	srl a ; random number between 0 and 7 
+	ld b, $0
+	ld c, a 
+	add hl, bc
+	ld b, [hl] ; get button from (hl + a)
+	ld a, b 
 	ld [hJoyPressed], a ; pressed
-	ld [hJoyDown], a ; input
+	ld [hJoyDown], a ; input 
 	jr .quit
 ; 9ee
 
@@ -489,3 +470,12 @@ Functionb06:: ; b06
 	ret
 ; b40
 
+AutoInputArray:
+	db $01
+	db $01
+	db $02
+	db $02
+	db $10
+	db $20
+	db $40
+	db $80

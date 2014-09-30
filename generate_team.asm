@@ -1,13 +1,1998 @@
-INCLUDE "includes.asm"
+GenerateTeam:
+	call ResetRNs
+
+	ld hl, PartyMons
+	ld bc, (PartyMon2 - PartyMon1) * 6
+	ld a, 1
+	call ByteFill
+	
+	ld hl, PartyMon1Item
+	ld bc, PartyMon2 - PartyMon1
+	ld e, 6
+.clearNextItem	
+	xor a
+	ld [hl], a
+	add hl, bc
+	dec e
+	jr nz, .clearNextItem
+	
+	ld hl, PartyMon1PokerusStatus
+	ld bc, PartyMon2 - PartyMon1
+	ld e, 6
+.clearNextPokerus
+	xor a
+	ld [hl], a
+	add hl, bc
+	dec e
+	jr nz, .clearNextPokerus	
+	
+	ld hl, PartyEnd
+	ld [hl], $ff
+
+; Species
+	ld hl, PartyCount
+	ld [hl], 6 ; six Pokémon
+	call GenSpecies
+
+; Moves	
+	xor a ; start with Pokémon 0 of 0-5
+.nextMon	
+	push af
+	ld hl, wBattle
+	ld bc, wBattleEnd - wBattle
+	xor a 
+	call ByteFill ; fill area with $00 for later use
+	pop af
+	call GenMoves
+	inc a
+	cp 6
+	jr nz, .nextMon
+	
+; Other
+	call GenID
+	call GenHappiness
+	call GenEVsAndDVs
+	call ResetExp
+
+; Nicknames
+	ld a, [PartySpecies]
+	ld hl, PartyMonNicknames
+	ld bc, PKMN_NAME_LENGTH
+	call ResetNicknames
+	ld a, [PartySpecies + 1]
+	add hl, bc
+	call ResetNicknames
+	ld a, [PartySpecies + 2]
+	add hl, bc
+	call ResetNicknames 
+	ld a, [PartySpecies + 3]
+	add hl, bc
+	call ResetNicknames
+	ld a, [PartySpecies + 4]
+	add hl, bc
+	call ResetNicknames
+	ld a, [PartySpecies + 5]
+	add hl, bc
+	call ResetNicknames	
+	
+	ret
+	
+
+ResetRNs: ; initialize the ten seeds to (pseudo) random numbers	
+	ld c, 10
+	ld hl, LinkBattleRNs
+.nextRN
+.notyet	
+	ld a, [$cfff]
+	inc a 
+	ld [$cfff], a
+	jr nz, .notyet
+	call Random2
+	ld a, [$cffe]
+	inc a
+	ld [$cffe], a
+	cp 27 ; kinda random number here
+	jr nz, .notyet
+	xor a
+	ld [$cffe], a
+	
+	ld a, [rDIV]
+	ld b, a 
+	ld a, [rTIMA] ; mix each seed up with the Timer Counter and the Divider Register
+	add b
+	ld [hli], a
+	dec c
+	jr nz, .nextRN
+	ret
+	
+	
+GenSpecies:
+	ld de, PartySpecies
+	ld hl, PartyMon1Species
+	ld bc, PartyMon2 - PartyMon1
+	jr .repeat 
+	
+.next
+	inc de
+	ld a, e
+	cp $de ; did we reach seventh Pokémon?
+	jr z, .done
+	add hl, bc
+	
+.repeat:
+	call Random2
+	cp CELEBI + 1 
+	jr nc, .repeat ; >= #252
+	and a 
+	jr z, .repeat ; = #000
+	ld [hl], a 
+	ld [de], a	
+	jr nz, .next
+	
+.done	
+	ret 
+	
+	
+GenMoves:
+	call IsSpecialCase ; certain Pokémon like Caterpie and Ditto learn no TMs and less than 4 moves
+					   ; return carry if it's one of those Pokémon, and fill its moveset
+	jp c, .doneSpecialCase				   
+	push af ; save number of Pokémon
+	ld hl, EvosAttacksPointers2
+	ld de, PartySpecies
+	add e ; which number of Pokémon are we dealing with (0-5)?
+	ld e, a
+	ld a, [de]
+	dec a 
+	ld b, 0
+	ld c, a 
+	add hl, bc 
+	add hl, bc  
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a 
+
+; hl now points to EvosAttacks of [PartySpeciesN]
+.stillEvoData	
+	ld a, [hl]
+	inc hl
+	and a 
+	jr nz, .stillEvoData
+	
+; hl now points to start of move data	
+	ld bc, wBattle
+.copyLevelUpMove
+	inc hl ; skip level byte
+	ld a, [hl]
+	ld [bc], a 
+	inc bc 
+	inc hl 
+	ld a, [hl]
+	and a ; more level-up moves?
+	jr nz, .copyLevelUpMove
+	push bc
+	
+.genEggMoves	
+	ld hl, EggMovePointers2
+	ld a, [de] ; ld a, [PartySpeciesN]
+	dec a
+	ld b, 0
+	ld c, a 
+	add hl, bc 
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a 
+	
+; hl now points to EggMoves of [PartySpeciesN]	
+	pop bc
+.copyEggMove
+	ld a, [hl]
+	ld [bc], a 
+	inc bc
+	ld a, [hl]
+	inc hl	
+	cp $ff ; more egg moves?
+	jr nz, .copyEggMove
+
+.getMoves
+	pop af ; restore number of Pokémon
+	push af 
+	ld bc, PartyMon1Moves
+	and a
+	jr z, .ok
+	ld bc, PartyMon1Moves + PartyMon2 - PartyMon1 ; PartyMon2Moves
+	dec a 
+	jr z, .ok
+	ld bc, PartyMon1Moves + (PartyMon2 - PartyMon1) * 2 
+	dec a
+	jr z, .ok
+	ld bc, PartyMon1Moves + (PartyMon2 - PartyMon1) * 3  
+	dec a
+	jr z, .ok
+	ld bc, PartyMon1Moves + (PartyMon2 - PartyMon1) * 4  
+	dec a
+	jr z, .ok	
+	ld bc, PartyMon1Moves + (PartyMon2 - PartyMon1) * 5 ; PartyMon6Moves
+
+; get 4 random moves and copy them in partyMonNMoves	
+.ok	
+.again1
+	call Random2
+	and $1f
+	ld hl, wBattle
+	ld d, 0
+	ld e, a
+	add hl, de
+	ld a, [hl] ; get a random move from the list
+	and a 
+	jr z, .again1 
+	cp $ff
+	jr z, .again1 
+	ld [bc], a
+	inc bc
+	
+.again2	
+	call Random2
+	and $1f
+	ld hl, wBattle
+	ld d, 0
+	ld e, a
+	add hl, de
+	ld a, [hl] ; get a random move from the list
+	and a 
+	jr z, .again2
+	cp $ff
+	jr z, .again2
+	ld h, b
+	ld l, c
+	dec hl
+	cp [hl] ; was this move already picked?
+	jr z, .again2 
+	ld [bc], a
+	inc bc
+	
+.again3	
+	call Random2
+	and $1f
+	ld hl, wBattle
+	ld d, 0
+	ld e, a
+	add hl, de
+	ld a, [hl] ; get a random move from the list
+	and a 
+	jr z, .again3
+	cp $ff
+	jr z, .again3
+	ld h, b
+	ld l, c
+	dec hl
+	cp [hl] ; was this move picked first?
+	jr z, .again3
+	dec hl
+	cp [hl] ; was this move picked second?
+	jr z, .again3
+	ld [bc], a
+	inc bc
+
+.again4	
+	call Random2
+	and $1f
+	ld hl, wBattle
+	ld d, 0
+	ld e, a
+	add hl, de
+	ld a, [hl] ; get a random move from the list
+	and a 
+	jr z, .again4
+	cp $ff
+	jr z, .again4
+	ld h, b
+	ld l, c
+	dec hl
+	cp [hl] ; was this move picked first?
+	jr z, .again4
+	dec hl
+	cp [hl] ; was this move picked second?
+	jr z, .again4	
+	dec hl
+	cp [hl] ; was this move picked third?
+	jr z, .again4
+	ld [bc], a
+	
+	pop af ; restore number of Pokémon
+	
+.doneSpecialCase	
+	ret
+	
+IsSpecialCase:
+	push af
+	
+	ld hl, PartySpecies
+	ld b, 0
+	ld c, a
+	add hl, bc ; PartySpeciesN
+	
+	ld bc, PartyMon1Moves
+	and a
+	jr z, .ok2
+	ld bc, PartyMon1Moves + PartyMon2 - PartyMon1 ; PartyMon2Moves
+	dec a 
+	jr z, .ok2
+	ld bc, PartyMon1Moves + (PartyMon2 - PartyMon1) * 2 
+	dec a
+	jr z, .ok2
+	ld bc, PartyMon1Moves + (PartyMon2 - PartyMon1) * 3  
+	dec a
+	jr z, .ok2
+	ld bc, PartyMon1Moves + (PartyMon2 - PartyMon1) * 4  
+	dec a
+	jr z, .ok2	
+	ld bc, PartyMon1Moves + (PartyMon2 - PartyMon1) * 5 ; PartyMon6Moves
+	
+.ok2	
+	ld a, [hl]
+	ld h, b
+	ld l, c ; hl = PartyMonNMoves
+	cp CATERPIE
+	jr z, ._Caterpie
+	cp METAPOD
+	jr z, ._Metapod
+	cp WEEDLE
+	jr z, ._Weedle
+	cp KAKUNA
+	jr z, ._Kakuna
+	cp MAGIKARP
+	jr z, ._Magikarp
+	cp UNOWN
+	jr z, ._Unown
+	cp WOBBUFFET
+	jr z, ._Wobbuffet
+	cp DITTO
+	jr z, ._Ditto
+	cp SMEARGLE
+	jr z, ._Smeargle
+	jr .none ; not a special Pokémon
+
+._Caterpie
+	ld a, TACKLE
+	ld [hli], a
+	ld a, STRING_SHOT
+	ld [hli], a
+	xor a
+	ld [hli], a
+	ld [hl], a
+	jr .finished
+
+._Metapod
+	ld a, TACKLE
+	ld [hli], a
+	ld a, STRING_SHOT
+	ld [hli], a
+	ld a, HARDEN
+	ld [hli], a
+	xor a
+	ld [hl], a
+	jr .finished
+	
+._Weedle
+	ld a, POISON_STING
+	ld [hli], a
+	ld a, STRING_SHOT
+	ld [hli], a
+	xor a
+	ld [hli], a
+	ld [hl], a
+	jr .finished
+
+._Kakuna
+	ld a, POISON_STING
+	ld [hli], a
+	ld a, STRING_SHOT
+	ld [hli], a
+	ld a, HARDEN
+	ld [hli], a
+	xor a
+	ld [hl], a	
+	jr .finished
+	
+._Magikarp
+	ld a, SPLASH
+	ld [hli], a
+	ld a, TACKLE
+	ld [hli], a
+	ld a, FLAIL
+	ld [hli], a
+	xor a
+	ld [hl], a
+	jr .finished
+
+._Unown
+	ld a, HIDDEN_POWER
+	ld [hli], a
+	xor a 
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	jr .finished
+
+._Wobbuffet
+	ld a, COUNTER
+	ld [hli], a
+	ld a, MIRROR_COAT
+	ld [hli], a
+	ld a, SAFEGUARD
+	ld [hli], a
+	ld a, DESTINY_BOND
+	ld [hl], a	
+	jr .finished
+
+._Ditto
+	ld a, TRANSFORM
+	ld [hli], a
+	xor a 
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	jr .finished
+
+._Smeargle
+	ld a, SKETCH
+	ld [hli], a
+	xor a 
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	jr .finished		
+	
+.finished	
+	pop af
+	scf
+	ret
+	
+.none
+	pop af	
+	scf
+	ccf
+	ret	
 
 
-SECTION "Evolutions and Attacks", ROMX, BANK[EVOS_ATTACKS]
+GenID:
+	ld hl, PartyMon1ID
+	ld de, PartyMon2 - PartyMon1	
+	ld b, 6
+.nextID	
+	call Random2
+	ld [hli], a
+	call Random2
+	ld [hld], a
+	ld de, PartyMon2 - PartyMon1
+	add hl, de
+	dec b
+	jr nz, .nextID
+	ret
+	
+	
+GenHappiness:
+	ld hl, PartyMon1Happiness
+	ld de, PartyMon2 - PartyMon1	
+	ld b, 6
+.nextHappiness
+	call Random2
+	ld [hl], a
+	add hl, de
+	dec b
+	jr nz, .nextHappiness
+	ret	
+	
+	
+GenEVsAndDVs:
+	ld hl, PartyMon1StatExp
+	ld de, PartyMon2 - PartyMon1	
+	ld b, 6
+.nextEVsAndDVs	
+	push hl
+	call Random2
+	ld [hli], a ; HP
+	call Random2
+	ld [hli], a ; HP	
+	call Random2
+	ld [hli], a ; Atk
+	call Random2
+	ld [hli], a ; Atk	
+	call Random2
+	ld [hli], a ; Def
+	call Random2
+	ld [hli], a ; Def	
+	call Random2
+	ld [hli], a ; Spd
+	call Random2
+	ld [hli], a ; Spd	
+	call Random2
+	ld [hli], a ; Spc
+	call Random2
+	ld [hli], a ; Spc	
+	call Random2
+	ld [hli], a ; AtkDefDV
+	call Random2
+	ld [hl], a ; SpdSpcDV
+	pop hl
+	add hl, de
+	dec b
+	jr nz, .nextEVsAndDVs
+	ret
+	
+	
+ResetExp:
+	ld hl, PartyMon1Exp
+	ld de, PartyMon2 - PartyMon1
+	ld b, 6
+.nextExp	
+	ld [hl], $0f
+	inc hl
+	ld [hl], $42
+	inc hl
+	ld [hl], $40 ; 1000000
+	dec hl
+	dec hl
+	add hl, de
+	dec b
+	jr nz, .nextExp
+	ret
+	
+	
+ResetNicknames:
+	push hl
+	ld d, h
+	ld e, l ; ld de, PartyMonNNickname
+	ld [$d265], a
+	push de
+	call GetPokemonName
+	pop de
+	ld hl, StringBuffer1
+	ld bc, PKMN_NAME_LENGTH
+	push bc
+	call CopyBytes ; copy name to PartyMonNNickname (de)
+	pop bc
+	pop hl
+	ret
+	
+	
+Random2:
+; Hijacked the RNG function used for link battles
+; Using the normal RNG function would lead to obvious patterns
+; This way we at least hide them	
 
+; The PRNG operates in streams of 10 values.
 
-INCLUDE "data/evos_attacks_pointers.asm"
+; Which value are we trying to pull?
+	push hl
+	push bc
+	ld a, [LinkBattleRNCount]
+	ld c, a
+	ld b, 0
+	ld hl, LinkBattleRNs
+	add hl, bc
+	inc a
+	ld [LinkBattleRNCount], a
 
+; If we haven't hit the end yet, we're good
+	cp 10 - 1 ; Exclude last value. See the closing comment
+	ld a, [hl]
+	pop bc
+	pop hl
+	ret c
 
-EvosAttacks::
+; If we have, we have to generate new pseudorandom data
+; Instead of having multiple PRNGs, ten seeds are used
+	push hl
+	push bc
+	push af
+
+; Reset count to 0
+	xor a
+	ld [LinkBattleRNCount], a
+	ld hl, LinkBattleRNs
+	ld b, 10 ; number of seeds
+
+; Generate next number in the sequence for each seed
+; The algorithm takes the form *5 + 1 % 256
+.loop
+	; get last #
+	ld a, [hl]
+
+	; a * 5 + 1
+	ld c, a
+	add a
+	add a
+	add c
+	inc a
+
+	; update #
+	ld [hli], a
+	dec b
+	jr nz, .loop
+
+; This has the side effect of pulling the last value first,
+; then wrapping around. As a result, when we check to see if
+; we've reached the end, we check the one before it.
+
+	pop af
+	pop bc
+	pop hl
+	ret
+; 3ee0f	
+	
+	
+	
+	
+INCLUDE "pokecrystal.asm"
+
+EggMovePointers2:: ; 0x23b11
+	dw BulbasaurEggMoves
+	dw BulbasaurEggMoves
+	dw BulbasaurEggMoves
+	dw CharmanderEggMoves
+	dw CharmanderEggMoves
+	dw CharmanderEggMoves
+	dw SquirtleEggMoves
+	dw SquirtleEggMoves
+	dw SquirtleEggMoves	
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw PidgeyEggMoves
+	dw PidgeyEggMoves
+	dw PidgeyEggMoves	
+	dw RattataEggMoves
+	dw RattataEggMoves
+	dw SpearowEggMoves
+	dw SpearowEggMoves
+	dw EkansEggMoves
+	dw EkansEggMoves
+	dw PichuEggMoves
+	dw PichuEggMoves	
+	dw SandshrewEggMoves
+	dw SandshrewEggMoves
+	dw NidoranFEggMoves
+	dw NidoranFEggMoves
+	dw NidoranFEggMoves	
+	dw NidoranMEggMoves
+	dw NidoranMEggMoves
+	dw NidoranMEggMoves	
+	dw CleffaEggMoves
+	dw CleffaEggMoves
+	dw VulpixEggMoves
+	dw VulpixEggMoves
+	dw IgglybuffEggMoves
+	dw IgglybuffEggMoves
+	dw ZubatEggMoves
+	dw ZubatEggMoves
+	dw OddishEggMoves
+	dw OddishEggMoves
+	dw OddishEggMoves	
+	dw ParasEggMoves
+	dw ParasEggMoves
+	dw VenonatEggMoves
+	dw VenonatEggMoves
+	dw DiglettEggMoves
+	dw DiglettEggMoves
+	dw MeowthEggMoves
+	dw MeowthEggMoves
+	dw PsyduckEggMoves
+	dw PsyduckEggMoves
+	dw MankeyEggMoves
+	dw MankeyEggMoves
+	dw GrowlitheEggMoves
+	dw GrowlitheEggMoves
+	dw PoliwagEggMoves
+	dw PoliwagEggMoves
+	dw PoliwagEggMoves
+	dw AbraEggMoves
+	dw AbraEggMoves
+	dw AbraEggMoves
+	dw MachopEggMoves
+	dw MachopEggMoves
+	dw MachopEggMoves
+	dw BellsproutEggMoves
+	dw BellsproutEggMoves
+	dw BellsproutEggMoves
+	dw TentacoolEggMoves
+	dw TentacoolEggMoves
+	dw GeodudeEggMoves
+	dw GeodudeEggMoves
+	dw GeodudeEggMoves
+	dw PonytaEggMoves
+	dw PonytaEggMoves
+	dw SlowpokeEggMoves
+	dw SlowpokeEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw FarfetchDEggMoves
+	dw DoduoEggMoves
+	dw DoduoEggMoves
+	dw SeelEggMoves
+	dw SeelEggMoves
+	dw GrimerEggMoves
+	dw GrimerEggMoves
+	dw ShellderEggMoves
+	dw ShellderEggMoves
+	dw GastlyEggMoves
+	dw GastlyEggMoves
+	dw GastlyEggMoves
+	dw OnixEggMoves
+	dw DrowzeeEggMoves
+	dw DrowzeeEggMoves
+	dw KrabbyEggMoves
+	dw KrabbyEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw ExeggcuteEggMoves
+	dw ExeggcuteEggMoves
+	dw CuboneEggMoves
+	dw CuboneEggMoves
+	dw TyrogueEggMoves
+	dw TyrogueEggMoves
+	dw LickitungEggMoves
+	dw KoffingEggMoves
+	dw KoffingEggMoves
+	dw RhyhornEggMoves
+	dw RhyhornEggMoves
+	dw ChanseyEggMoves
+	dw TangelaEggMoves
+	dw KangaskhanEggMoves
+	dw HorseaEggMoves
+	dw HorseaEggMoves
+	dw GoldeenEggMoves
+	dw GoldeenEggMoves
+if _CRYSTAL
+	dw NoEggMoves
+else
+	dw StaryuEggMoves
+endc
+	dw NoEggMoves
+	dw MrMimeEggMoves
+	dw ScytherEggMoves
+	dw SmoochumEggMoves
+	dw ElekidEggMoves
+	dw MagbyEggMoves
+	dw PinsirEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw LaprasEggMoves
+	dw NoEggMoves
+	dw EeveeEggMoves
+	dw EeveeEggMoves
+	dw EeveeEggMoves
+	dw EeveeEggMoves
+	dw NoEggMoves
+	dw OmanyteEggMoves
+	dw OmanyteEggMoves
+	dw KabutoEggMoves
+	dw KabutoEggMoves
+	dw AerodactylEggMoves
+	dw SnorlaxEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw DratiniEggMoves
+	dw DratiniEggMoves
+	dw DratiniEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw ChikoritaEggMoves
+	dw ChikoritaEggMoves
+	dw ChikoritaEggMoves	
+	dw CyndaquilEggMoves
+	dw CyndaquilEggMoves
+	dw CyndaquilEggMoves	
+	dw TotodileEggMoves
+	dw TotodileEggMoves
+	dw TotodileEggMoves	
+	dw SentretEggMoves
+	dw SentretEggMoves
+	dw HoothootEggMoves
+	dw HoothootEggMoves
+	dw LedybaEggMoves
+	dw LedybaEggMoves
+	dw SpinarakEggMoves
+	dw SpinarakEggMoves
+	dw ZubatEggMoves
+	dw ChinchouEggMoves
+	dw ChinchouEggMoves
+	dw PichuEggMoves
+	dw CleffaEggMoves
+	dw IgglybuffEggMoves
+	dw TogepiEggMoves
+	dw TogepiEggMoves
+	dw NatuEggMoves
+	dw NatuEggMoves
+	dw MareepEggMoves
+	dw MareepEggMoves
+	dw MareepEggMoves
+	dw OddishEggMoves
+	dw MarillEggMoves
+	dw MarillEggMoves
+	dw SudowoodoEggMoves
+	dw PoliwagEggMoves
+	dw HoppipEggMoves
+	dw HoppipEggMoves
+	dw HoppipEggMoves
+	dw AipomEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw YanmaEggMoves
+	dw WooperEggMoves
+	dw WooperEggMoves
+	dw EeveeEggMoves
+	dw EeveeEggMoves
+	dw MurkrowEggMoves
+	dw SlowpokeEggMoves
+	dw MisdreavusEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw GirafarigEggMoves
+	dw PinecoEggMoves
+	dw PinecoEggMoves
+	dw DunsparceEggMoves
+	dw GligarEggMoves
+	dw OnixEggMoves
+	dw SnubbullEggMoves
+	dw SnubbullEggMoves
+	dw QwilfishEggMoves
+	dw ScytherEggMoves
+	dw ShuckleEggMoves
+	dw HeracrossEggMoves
+	dw SneaselEggMoves
+	dw TeddiursaEggMoves
+	dw TeddiursaEggMoves
+	dw SlugmaEggMoves
+	dw SlugmaEggMoves
+	dw SwinubEggMoves
+	dw SwinubEggMoves
+	dw CorsolaEggMoves
+	dw RemoraidEggMoves
+	dw RemoraidEggMoves
+	dw DelibirdEggMoves
+	dw MantineEggMoves
+	dw SkarmoryEggMoves
+	dw HoundourEggMoves
+	dw HoundourEggMoves
+	dw HorseaEggMoves
+	dw PhanpyEggMoves
+	dw PhanpyEggMoves
+	dw NoEggMoves
+	dw StantlerEggMoves
+	dw NoEggMoves
+	dw TyrogueEggMoves
+	dw TyrogueEggMoves
+	dw SmoochumEggMoves
+	dw ElekidEggMoves
+	dw MagbyEggMoves
+	dw MiltankEggMoves
+	dw ChanseyEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw LarvitarEggMoves
+	dw LarvitarEggMoves
+	dw LarvitarEggMoves	
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	
+	
+BulbasaurEggMoves:
+	db LIGHT_SCREEN
+	db SKULL_BASH
+	db SAFEGUARD
+if !_CRYSTAL
+	db CHARM
+endc
+	db RAZOR_WIND
+	db PETAL_DANCE
+	db $ff
+
+CharmanderEggMoves:
+	db BELLY_DRUM
+	db ANCIENTPOWER
+	db ROCK_SLIDE
+	db BITE
+	db OUTRAGE
+	db BEAT_UP
+	db $ff
+
+SquirtleEggMoves:
+	db MIRROR_COAT
+	db HAZE
+	db MIST
+	db CONFUSION
+	db FORESIGHT
+	db FLAIL
+	db $ff
+
+PidgeyEggMoves:
+	db PURSUIT
+	db FAINT_ATTACK
+	db FORESIGHT
+if !_CRYSTAL
+	db STEEL_WING
+endc
+	db $ff
+
+RattataEggMoves:
+	db SCREECH
+	db FLAME_WHEEL
+	db FURY_SWIPES
+	db BITE
+	db COUNTER
+	db REVERSAL
+	db $ff
+
+SpearowEggMoves:
+	db FAINT_ATTACK
+	db FALSE_SWIPE
+	db SCARY_FACE
+	db QUICK_ATTACK
+	db TRI_ATTACK
+	db $ff
+
+EkansEggMoves:
+	db PURSUIT
+	db SLAM
+	db SPITE
+	db BEAT_UP
+if _CRYSTAL
+	db CRUNCH
+endc
+	db $ff
+
+SandshrewEggMoves:
+	db FLAIL
+	db SAFEGUARD
+	db COUNTER
+	db RAPID_SPIN
+if _CRYSTAL
+	db METAL_CLAW
+endc
+	db $ff
+
+NidoranFEggMoves:
+	db SUPERSONIC
+	db DISABLE
+	db TAKE_DOWN
+	db FOCUS_ENERGY
+	db CHARM
+	db COUNTER
+	db BEAT_UP
+	db $ff
+
+NidoranMEggMoves:
+	db SUPERSONIC
+	db DISABLE
+	db TAKE_DOWN
+	db CONFUSION
+	db AMNESIA
+	db COUNTER
+	db BEAT_UP
+	db $ff
+
+VulpixEggMoves:
+	db FAINT_ATTACK
+	db HYPNOSIS
+	db FLAIL
+	db SPITE
+	db DISABLE
+	db $ff
+
+ZubatEggMoves:
+	db QUICK_ATTACK
+	db PURSUIT
+	db FAINT_ATTACK
+	db GUST
+	db WHIRLWIND
+	db $ff
+
+OddishEggMoves:
+	db SWORDS_DANCE
+	db RAZOR_LEAF
+	db FLAIL
+	db SYNTHESIS
+if !_CRYSTAL
+	db CHARM
+endc
+	db $ff
+
+ParasEggMoves:
+	db FALSE_SWIPE
+	db SCREECH
+	db COUNTER
+	db PSYBEAM
+	db FLAIL
+if !_CRYSTAL
+	db SWEET_SCENT
+endc
+	db LIGHT_SCREEN
+	db PURSUIT
+	db $ff
+
+VenonatEggMoves:
+	db BATON_PASS
+	db SCREECH
+	db GIGA_DRAIN
+	db $ff
+
+DiglettEggMoves:
+	db FAINT_ATTACK
+	db SCREECH
+	db ANCIENTPOWER
+	db PURSUIT
+	db BEAT_UP
+	db $ff
+
+MeowthEggMoves:
+	db SPITE
+	db CHARM
+	db HYPNOSIS
+	db AMNESIA
+	db $ff
+
+PsyduckEggMoves:
+	db ICE_BEAM
+	db HYPNOSIS
+	db PSYBEAM
+	db FORESIGHT
+	db LIGHT_SCREEN
+	db FUTURE_SIGHT
+	db PSYCHIC_M
+if _CRYSTAL
+	db CROSS_CHOP
+endc
+	db $ff
+
+MankeyEggMoves:
+	db ROCK_SLIDE
+	db FORESIGHT
+	db MEDITATE
+	db COUNTER
+	db REVERSAL
+	db BEAT_UP
+	db $ff
+
+GrowlitheEggMoves:
+	db BODY_SLAM
+	db SAFEGUARD
+	db CRUNCH
+	db THRASH
+	db FIRE_SPIN
+	db $ff
+
+PoliwagEggMoves:
+	db MIST
+	db SPLASH
+	db BUBBLEBEAM
+	db HAZE
+	db MIND_READER
+	db $ff
+
+AbraEggMoves:
+	db LIGHT_SCREEN
+	db ENCORE
+	db BARRIER
+	db $ff
+
+MachopEggMoves:
+	db LIGHT_SCREEN
+	db MEDITATE
+	db ROLLING_KICK
+	db ENCORE
+	db $ff
+
+BellsproutEggMoves:
+	db SWORDS_DANCE
+	db ENCORE
+	db REFLECT
+	db SYNTHESIS
+	db LEECH_LIFE
+	db $ff
+
+TentacoolEggMoves:
+	db AURORA_BEAM
+	db MIRROR_COAT
+	db RAPID_SPIN
+	db HAZE
+	db SAFEGUARD
+	db $ff
+
+GeodudeEggMoves:
+	db MEGA_PUNCH
+	db ROCK_SLIDE
+	db $ff
+
+PonytaEggMoves:
+	db FLAME_WHEEL
+	db THRASH
+	db DOUBLE_KICK
+	db HYPNOSIS
+	db CHARM
+	db QUICK_ATTACK
+	db $ff
+
+SlowpokeEggMoves:
+	db SAFEGUARD
+	db BELLY_DRUM
+	db FUTURE_SIGHT
+	db STOMP
+	db $ff
+
+FarfetchDEggMoves:
+if !_CRYSTAL
+	db STEEL_WING
+endc
+	db FORESIGHT
+	db MIRROR_MOVE
+	db GUST
+	db QUICK_ATTACK
+	db FLAIL
+	db $ff
+
+DoduoEggMoves:
+	db QUICK_ATTACK
+	db SUPERSONIC
+	db HAZE
+	db FAINT_ATTACK
+	db FLAIL
+	db $ff
+
+SeelEggMoves:
+	db LICK
+	db PERISH_SONG
+	db DISABLE
+	db PECK
+	db SLAM
+	db ENCORE
+	db $ff
+
+GrimerEggMoves:
+	db HAZE
+	db MEAN_LOOK
+	db LICK
+	db $ff
+
+ShellderEggMoves:
+	db BUBBLEBEAM
+	db TAKE_DOWN
+	db BARRIER
+	db RAPID_SPIN
+	db SCREECH
+	db $ff
+
+GastlyEggMoves:
+	db PSYWAVE
+	db PERISH_SONG
+	db HAZE
+	db $ff
+
+OnixEggMoves:
+	db ROCK_SLIDE
+	db FLAIL
+	db $ff
+
+DrowzeeEggMoves:
+	db LIGHT_SCREEN
+	db BARRIER
+	db $ff
+
+KrabbyEggMoves:
+	db DIG
+	db HAZE
+	db AMNESIA
+	db FLAIL
+	db SLAM
+	db $ff
+
+ExeggcuteEggMoves:
+	db SYNTHESIS
+	db MOONLIGHT
+	db REFLECT
+	db MEGA_DRAIN
+	db ANCIENTPOWER
+	db $ff
+
+CuboneEggMoves:
+	db ROCK_SLIDE
+	db ANCIENTPOWER
+	db BELLY_DRUM
+	db SCREECH
+	db SKULL_BASH
+	db PERISH_SONG
+if _CRYSTAL
+	db SWORDS_DANCE
+endc
+	db $ff
+
+LickitungEggMoves:
+	db BELLY_DRUM
+	db MAGNITUDE
+	db BODY_SLAM
+	db $ff
+
+KoffingEggMoves:
+	db SCREECH
+	db PSYWAVE
+	db PSYBEAM
+	db DESTINY_BOND
+	db PAIN_SPLIT
+	db $ff
+
+RhyhornEggMoves:
+	db CRUNCH
+	db REVERSAL
+	db ROCK_SLIDE
+	db THRASH
+	db PURSUIT
+	db COUNTER
+	db MAGNITUDE
+	db $ff
+
+ChanseyEggMoves:
+	db PRESENT
+	db METRONOME
+	db HEAL_BELL
+	db $ff
+
+TangelaEggMoves:
+	db FLAIL
+	db CONFUSION
+	db MEGA_DRAIN
+	db REFLECT
+	db AMNESIA
+	db $ff
+
+KangaskhanEggMoves:
+	db STOMP
+	db FORESIGHT
+	db FOCUS_ENERGY
+	db SAFEGUARD
+	db DISABLE
+	db $ff
+
+HorseaEggMoves:
+	db FLAIL
+	db AURORA_BEAM
+	db OCTAZOOKA
+	db DISABLE
+	db SPLASH
+	db DRAGON_RAGE
+	db $ff
+
+GoldeenEggMoves:
+	db PSYBEAM
+	db HAZE
+	db HYDRO_PUMP
+	db $ff
+
+if !_CRYSTAL
+StaryuEggMoves:
+	db AURORA_BEAM
+	db BARRIER
+	db SUPERSONIC
+	db $ff
+endc
+
+MrMimeEggMoves:
+	db FUTURE_SIGHT
+	db HYPNOSIS
+	db MIMIC
+	db $ff
+
+ScytherEggMoves:
+	db COUNTER
+	db SAFEGUARD
+	db BATON_PASS
+	db RAZOR_WIND
+	db REVERSAL
+	db LIGHT_SCREEN
+	db $ff
+
+PinsirEggMoves:
+	db FURY_ATTACK
+	db FLAIL
+	db $ff
+
+LaprasEggMoves:
+	db AURORA_BEAM
+	db FORESIGHT
+	db $ff
+
+EeveeEggMoves:
+	db FLAIL
+	db CHARM
+	db $ff
+
+OmanyteEggMoves:
+	db BUBBLEBEAM
+	db AURORA_BEAM
+	db SLAM
+	db SUPERSONIC
+	db HAZE
+	db $ff
+
+KabutoEggMoves:
+	db BUBBLEBEAM
+	db AURORA_BEAM
+	db RAPID_SPIN
+	db DIG
+	db FLAIL
+	db $ff
+
+AerodactylEggMoves:
+	db WHIRLWIND
+	db PURSUIT
+	db FORESIGHT
+if !_CRYSTAL
+	db STEEL_WING
+endc
+	db $ff
+
+SnorlaxEggMoves:
+	db LICK
+if !_CRYSTAL
+	db CHARM
+endc
+	db $ff
+
+DratiniEggMoves:
+	db LIGHT_SCREEN
+	db MIST
+	db HAZE
+	db SUPERSONIC
+	db $ff
+
+ChikoritaEggMoves:
+	db VINE_WHIP
+	db LEECH_SEED
+	db COUNTER
+	db ANCIENTPOWER
+	db FLAIL
+	db SWORDS_DANCE
+	db $ff
+
+CyndaquilEggMoves:
+	db FURY_SWIPES
+	db QUICK_ATTACK
+	db REVERSAL
+	db THRASH
+	db FORESIGHT
+if _CRYSTAL
+	db SUBMISSION
+endc
+	db $ff
+
+TotodileEggMoves:
+	db CRUNCH
+	db THRASH
+	db HYDRO_PUMP
+	db ANCIENTPOWER
+	db RAZOR_WIND
+	db ROCK_SLIDE
+	db $ff
+
+SentretEggMoves:
+	db DOUBLE_EDGE
+	db PURSUIT
+	db SLASH
+	db FOCUS_ENERGY
+	db REVERSAL
+	db $ff
+
+HoothootEggMoves:
+	db MIRROR_MOVE
+	db SUPERSONIC
+	db FAINT_ATTACK
+	db WING_ATTACK
+	db WHIRLWIND
+if _CRYSTAL
+	db SKY_ATTACK
+endc
+	db $ff
+
+LedybaEggMoves:
+	db PSYBEAM
+	db BIDE
+	db LIGHT_SCREEN
+	db $ff
+
+SpinarakEggMoves:
+	db PSYBEAM
+	db DISABLE
+	db SONICBOOM
+	db BATON_PASS
+	db PURSUIT
+	db $ff
+
+ChinchouEggMoves:
+	db FLAIL
+	db SUPERSONIC
+	db SCREECH
+	db $ff
+
+PichuEggMoves:
+	db REVERSAL
+	db BIDE
+	db PRESENT
+	db ENCORE
+	db DOUBLESLAP
+	db $ff
+
+CleffaEggMoves:
+	db PRESENT
+	db METRONOME
+	db AMNESIA
+	db BELLY_DRUM
+	db SPLASH
+	db MIMIC
+	db $ff
+
+IgglybuffEggMoves:
+	db PERISH_SONG
+	db PRESENT
+	db FAINT_ATTACK
+	db $ff
+
+TogepiEggMoves:
+	db PRESENT
+	db MIRROR_MOVE
+	db PECK
+	db FORESIGHT
+	db FUTURE_SIGHT
+	db $ff
+
+NatuEggMoves:
+	db HAZE
+	db DRILL_PECK
+	db QUICK_ATTACK
+	db FAINT_ATTACK
+	db STEEL_WING
+	db $ff
+
+MareepEggMoves:
+	db THUNDERBOLT
+	db TAKE_DOWN
+	db BODY_SLAM
+	db SAFEGUARD
+	db SCREECH
+	db REFLECT
+	db $ff
+
+MarillEggMoves:
+	db LIGHT_SCREEN
+	db PRESENT
+	db AMNESIA
+	db FUTURE_SIGHT
+	db BELLY_DRUM
+	db PERISH_SONG
+	db SUPERSONIC
+	db FORESIGHT
+	db $ff
+
+SudowoodoEggMoves:
+	db SELFDESTRUCT
+	db $ff
+
+HoppipEggMoves:
+	db CONFUSION
+	db GROWL
+	db ENCORE
+	db DOUBLE_EDGE
+	db REFLECT
+	db AMNESIA
+	db PAY_DAY
+	db $ff
+
+AipomEggMoves:
+	db COUNTER
+	db SCREECH
+	db PURSUIT
+	db AGILITY
+	db SPITE
+	db SLAM
+	db DOUBLESLAP
+	db BEAT_UP
+	db $ff
+
+YanmaEggMoves:
+	db WHIRLWIND
+	db REVERSAL
+	db LEECH_LIFE
+	db $ff
+
+WooperEggMoves:
+	db BODY_SLAM
+	db ANCIENTPOWER
+	db SAFEGUARD
+	db $ff
+
+MurkrowEggMoves:
+	db WHIRLWIND
+	db DRILL_PECK
+	db QUICK_ATTACK
+	db MIRROR_MOVE
+	db WING_ATTACK
+if _CRYSTAL
+	db SKY_ATTACK
+endc
+	db $ff
+
+MisdreavusEggMoves:
+	db SCREECH
+	db DESTINY_BOND
+	db $ff
+
+GirafarigEggMoves:
+	db TAKE_DOWN
+	db AMNESIA
+	db FORESIGHT
+	db FUTURE_SIGHT
+	db BEAT_UP
+	db $ff
+
+PinecoEggMoves:
+	db REFLECT
+	db PIN_MISSILE
+	db FLAIL
+	db SWIFT
+	db $ff
+
+DunsparceEggMoves:
+	db BIDE
+	db ANCIENTPOWER
+	db ROCK_SLIDE
+	db BITE
+	db RAGE
+	db $ff
+
+GligarEggMoves:
+	db METAL_CLAW
+	db WING_ATTACK
+	db RAZOR_WIND
+	db COUNTER
+	db $ff
+
+SnubbullEggMoves:
+	db METRONOME
+	db FAINT_ATTACK
+	db REFLECT
+	db PRESENT
+	db CRUNCH
+	db HEAL_BELL
+	db LICK
+	db LEER
+	db $ff
+
+QwilfishEggMoves:
+	db FLAIL
+	db HAZE
+	db BUBBLEBEAM
+	db SUPERSONIC
+	db $ff
+
+ShuckleEggMoves:
+	db SWEET_SCENT
+	db $ff
+
+HeracrossEggMoves:
+	db HARDEN
+	db BIDE
+	db FLAIL
+	db $ff
+
+SneaselEggMoves:
+	db COUNTER
+	db SPITE
+	db FORESIGHT
+	db REFLECT
+	db BITE
+	db $ff
+
+TeddiursaEggMoves:
+	db CRUNCH
+	db TAKE_DOWN
+	db SEISMIC_TOSS
+	db FOCUS_ENERGY
+	db COUNTER
+if _CRYSTAL
+	db METAL_CLAW
+endc
+	db $ff
+
+SlugmaEggMoves:
+	db ACID_ARMOR
+	db $ff
+
+SwinubEggMoves:
+	db TAKE_DOWN
+	db BITE
+	db BODY_SLAM
+	db ROCK_SLIDE
+	db ANCIENTPOWER
+	db $ff
+
+CorsolaEggMoves:
+	db ROCK_SLIDE
+	db SAFEGUARD
+	db SCREECH
+	db MIST
+	db AMNESIA
+	db $ff
+
+RemoraidEggMoves:
+	db AURORA_BEAM
+	db OCTAZOOKA
+	db SUPERSONIC
+	db HAZE
+	db SCREECH
+	db $ff
+
+DelibirdEggMoves:
+	db AURORA_BEAM
+	db QUICK_ATTACK
+	db FUTURE_SIGHT
+	db SPLASH
+	db RAPID_SPIN
+	db $ff
+
+MantineEggMoves:
+	db TWISTER
+	db HYDRO_PUMP
+	db HAZE
+	db SLAM
+	db $ff
+
+SkarmoryEggMoves:
+	db DRILL_PECK
+	db PURSUIT
+	db WHIRLWIND
+if _CRYSTAL
+	db SKY_ATTACK
+endc
+	db $ff
+
+HoundourEggMoves:
+	db FIRE_SPIN
+	db RAGE
+	db PURSUIT
+	db COUNTER
+	db SPITE
+	db REVERSAL
+	db BEAT_UP
+	db $ff
+
+PhanpyEggMoves:
+	db FOCUS_ENERGY
+	db BODY_SLAM
+	db ANCIENTPOWER
+if _CRYSTAL
+	db WATER_GUN
+endc
+	db $ff
+
+StantlerEggMoves:
+	db REFLECT
+	db SPITE
+	db DISABLE
+	db LIGHT_SCREEN
+	db BITE
+	db $ff
+
+TyrogueEggMoves:
+	db RAPID_SPIN
+	db HI_JUMP_KICK
+	db MACH_PUNCH
+	db MIND_READER
+	db $ff
+
+SmoochumEggMoves:
+if !_CRYSTAL
+	db LOVELY_KISS
+endc
+	db MEDITATE
+	db $ff
+
+ElekidEggMoves:
+	db KARATE_CHOP
+	db BARRIER
+	db ROLLING_KICK
+	db MEDITATE
+if _CRYSTAL
+	db CROSS_CHOP
+endc
+	db $ff
+
+MagbyEggMoves:
+	db KARATE_CHOP
+	db MEGA_PUNCH
+	db BARRIER
+	db SCREECH
+if _CRYSTAL
+	db CROSS_CHOP
+endc
+	db $ff
+
+MiltankEggMoves:
+	db PRESENT
+	db REVERSAL
+	db SEISMIC_TOSS
+	db $ff
+
+LarvitarEggMoves:
+	db PURSUIT
+	db STOMP
+	db OUTRAGE
+	db FOCUS_ENERGY
+	db ANCIENTPOWER
+	db $ff
+
+NoEggMoves:
+	db $ff
+	
+
+EvosAttacksPointers2:: ; 0x425b1
+	dw BulbasaurEvosAttacks
+	dw IvysaurEvosAttacks
+	dw VenusaurEvosAttacks
+	dw CharmanderEvosAttacks
+	dw CharmeleonEvosAttacks
+	dw CharizardEvosAttacks
+	dw SquirtleEvosAttacks
+	dw WartortleEvosAttacks
+	dw BlastoiseEvosAttacks
+	dw CaterpieEvosAttacks
+	dw MetapodEvosAttacks
+	dw ButterfreeEvosAttacks
+	dw WeedleEvosAttacks
+	dw KakunaEvosAttacks
+	dw BeedrillEvosAttacks
+	dw PidgeyEvosAttacks
+	dw PidgeottoEvosAttacks
+	dw PidgeotEvosAttacks
+	dw RattataEvosAttacks
+	dw RaticateEvosAttacks
+	dw SpearowEvosAttacks
+	dw FearowEvosAttacks
+	dw EkansEvosAttacks
+	dw ArbokEvosAttacks
+	dw PikachuEvosAttacks
+	dw RaichuEvosAttacks
+	dw SandshrewEvosAttacks
+	dw SandslashEvosAttacks
+	dw NidoranFEvosAttacks
+	dw NidorinaEvosAttacks
+	dw NidoqueenEvosAttacks
+	dw NidoranMEvosAttacks
+	dw NidorinoEvosAttacks
+	dw NidokingEvosAttacks
+	dw ClefairyEvosAttacks
+	dw ClefableEvosAttacks
+	dw VulpixEvosAttacks
+	dw NinetalesEvosAttacks
+	dw JigglypuffEvosAttacks
+	dw WigglytuffEvosAttacks
+	dw ZubatEvosAttacks
+	dw GolbatEvosAttacks
+	dw OddishEvosAttacks
+	dw GloomEvosAttacks
+	dw VileplumeEvosAttacks
+	dw ParasEvosAttacks
+	dw ParasectEvosAttacks
+	dw VenonatEvosAttacks
+	dw VenomothEvosAttacks
+	dw DiglettEvosAttacks
+	dw DugtrioEvosAttacks
+	dw MeowthEvosAttacks
+	dw PersianEvosAttacks
+	dw PsyduckEvosAttacks
+	dw GolduckEvosAttacks
+	dw MankeyEvosAttacks
+	dw PrimeapeEvosAttacks
+	dw GrowlitheEvosAttacks
+	dw ArcanineEvosAttacks
+	dw PoliwagEvosAttacks
+	dw PoliwhirlEvosAttacks
+	dw PoliwrathEvosAttacks
+	dw AbraEvosAttacks
+	dw KadabraEvosAttacks
+	dw AlakazamEvosAttacks
+	dw MachopEvosAttacks
+	dw MachokeEvosAttacks
+	dw MachampEvosAttacks
+	dw BellsproutEvosAttacks
+	dw WeepinbellEvosAttacks
+	dw VictreebelEvosAttacks
+	dw TentacoolEvosAttacks
+	dw TentacruelEvosAttacks
+	dw GeodudeEvosAttacks
+	dw GravelerEvosAttacks
+	dw GolemEvosAttacks
+	dw PonytaEvosAttacks
+	dw RapidashEvosAttacks
+	dw SlowpokeEvosAttacks
+	dw SlowbroEvosAttacks
+	dw MagnemiteEvosAttacks
+	dw MagnetonEvosAttacks
+	dw FarfetchDEvosAttacks
+	dw DoduoEvosAttacks
+	dw DodrioEvosAttacks
+	dw SeelEvosAttacks
+	dw DewgongEvosAttacks
+	dw GrimerEvosAttacks
+	dw MukEvosAttacks
+	dw ShellderEvosAttacks
+	dw CloysterEvosAttacks
+	dw GastlyEvosAttacks
+	dw HaunterEvosAttacks
+	dw GengarEvosAttacks
+	dw OnixEvosAttacks
+	dw DrowzeeEvosAttacks
+	dw HypnoEvosAttacks
+	dw KrabbyEvosAttacks
+	dw KinglerEvosAttacks
+	dw VoltorbEvosAttacks
+	dw ElectrodeEvosAttacks
+	dw ExeggcuteEvosAttacks
+	dw ExeggutorEvosAttacks
+	dw CuboneEvosAttacks
+	dw MarowakEvosAttacks
+	dw HitmonleeEvosAttacks
+	dw HitmonchanEvosAttacks
+	dw LickitungEvosAttacks
+	dw KoffingEvosAttacks
+	dw WeezingEvosAttacks
+	dw RhyhornEvosAttacks
+	dw RhydonEvosAttacks
+	dw ChanseyEvosAttacks
+	dw TangelaEvosAttacks
+	dw KangaskhanEvosAttacks
+	dw HorseaEvosAttacks
+	dw SeadraEvosAttacks
+	dw GoldeenEvosAttacks
+	dw SeakingEvosAttacks
+	dw StaryuEvosAttacks
+	dw StarmieEvosAttacks
+	dw MrMimeEvosAttacks
+	dw ScytherEvosAttacks
+	dw JynxEvosAttacks
+	dw ElectabuzzEvosAttacks
+	dw MagmarEvosAttacks
+	dw PinsirEvosAttacks
+	dw TaurosEvosAttacks
+	dw MagikarpEvosAttacks
+	dw GyaradosEvosAttacks
+	dw LaprasEvosAttacks
+	dw DittoEvosAttacks
+	dw EeveeEvosAttacks
+	dw VaporeonEvosAttacks
+	dw JolteonEvosAttacks
+	dw FlareonEvosAttacks
+	dw PorygonEvosAttacks
+	dw OmanyteEvosAttacks
+	dw OmastarEvosAttacks
+	dw KabutoEvosAttacks
+	dw KabutopsEvosAttacks
+	dw AerodactylEvosAttacks
+	dw SnorlaxEvosAttacks
+	dw ArticunoEvosAttacks
+	dw ZapdosEvosAttacks
+	dw MoltresEvosAttacks
+	dw DratiniEvosAttacks
+	dw DragonairEvosAttacks
+	dw DragoniteEvosAttacks
+	dw MewtwoEvosAttacks
+	dw MewEvosAttacks
+	dw ChikoritaEvosAttacks
+	dw BayleefEvosAttacks
+	dw MeganiumEvosAttacks
+	dw CyndaquilEvosAttacks
+	dw QuilavaEvosAttacks
+	dw TyphlosionEvosAttacks
+	dw TotodileEvosAttacks
+	dw CroconawEvosAttacks
+	dw FeraligatrEvosAttacks
+	dw SentretEvosAttacks
+	dw FurretEvosAttacks
+	dw HoothootEvosAttacks
+	dw NoctowlEvosAttacks
+	dw LedybaEvosAttacks
+	dw LedianEvosAttacks
+	dw SpinarakEvosAttacks
+	dw AriadosEvosAttacks
+	dw CrobatEvosAttacks
+	dw ChinchouEvosAttacks
+	dw LanturnEvosAttacks
+	dw PichuEvosAttacks
+	dw CleffaEvosAttacks
+	dw IgglybuffEvosAttacks
+	dw TogepiEvosAttacks
+	dw TogeticEvosAttacks
+	dw NatuEvosAttacks
+	dw XatuEvosAttacks
+	dw MareepEvosAttacks
+	dw FlaaffyEvosAttacks
+	dw AmpharosEvosAttacks
+	dw BellossomEvosAttacks
+	dw MarillEvosAttacks
+	dw AzumarillEvosAttacks
+	dw SudowoodoEvosAttacks
+	dw PolitoedEvosAttacks
+	dw HoppipEvosAttacks
+	dw SkiploomEvosAttacks
+	dw JumpluffEvosAttacks
+	dw AipomEvosAttacks
+	dw SunkernEvosAttacks
+	dw SunfloraEvosAttacks
+	dw YanmaEvosAttacks
+	dw WooperEvosAttacks
+	dw QuagsireEvosAttacks
+	dw EspeonEvosAttacks
+	dw UmbreonEvosAttacks
+	dw MurkrowEvosAttacks
+	dw SlowkingEvosAttacks
+	dw MisdreavusEvosAttacks
+	dw UnownEvosAttacks
+	dw WobbuffetEvosAttacks
+	dw GirafarigEvosAttacks
+	dw PinecoEvosAttacks
+	dw ForretressEvosAttacks
+	dw DunsparceEvosAttacks
+	dw GligarEvosAttacks
+	dw SteelixEvosAttacks
+	dw SnubbullEvosAttacks
+	dw GranbullEvosAttacks
+	dw QwilfishEvosAttacks
+	dw ScizorEvosAttacks
+	dw ShuckleEvosAttacks
+	dw HeracrossEvosAttacks
+	dw SneaselEvosAttacks
+	dw TeddiursaEvosAttacks
+	dw UrsaringEvosAttacks
+	dw SlugmaEvosAttacks
+	dw MagcargoEvosAttacks
+	dw SwinubEvosAttacks
+	dw PiloswineEvosAttacks
+	dw CorsolaEvosAttacks
+	dw RemoraidEvosAttacks
+	dw OctilleryEvosAttacks
+	dw DelibirdEvosAttacks
+	dw MantineEvosAttacks
+	dw SkarmoryEvosAttacks
+	dw HoundourEvosAttacks
+	dw HoundoomEvosAttacks
+	dw KingdraEvosAttacks
+	dw PhanpyEvosAttacks
+	dw DonphanEvosAttacks
+	dw Porygon2EvosAttacks
+	dw StantlerEvosAttacks
+	dw SmeargleEvosAttacks
+	dw TyrogueEvosAttacks
+	dw HitmontopEvosAttacks
+	dw SmoochumEvosAttacks
+	dw ElekidEvosAttacks
+	dw MagbyEvosAttacks
+	dw MiltankEvosAttacks
+	dw BlisseyEvosAttacks
+	dw RaikouEvosAttacks
+	dw EnteiEvosAttacks
+	dw SuicuneEvosAttacks
+	dw LarvitarEvosAttacks
+	dw PupitarEvosAttacks
+	dw TyranitarEvosAttacks
+	dw LugiaEvosAttacks
+	dw HoOhEvosAttacks
+	dw CelebiEvosAttacks
 
 BulbasaurEvosAttacks:
 	db EVOLVE_LEVEL,16,IVYSAUR
@@ -3370,3 +5355,4 @@ CelebiEvosAttacks:
 	db 40,BATON_PASS
 	db 50,PERISH_SONG
 	db 0 ; no more level-up moves
+	

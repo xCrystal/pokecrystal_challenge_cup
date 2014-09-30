@@ -3849,10 +3849,6 @@ Function3d8b3: ; 3d8b3
 	cp BATTLETYPE_SUICUNE
 	jp z, .asm_3d98d
 
-	ld a, [InLinkBattle]
-	and a
-	jp nz, .asm_3d9a2
-
 	ld a, [IsInBattle]
 	dec a
 	jp nz, .asm_3d992
@@ -5521,7 +5517,7 @@ PassedBattleMonEntrance: ; 3e459
 
 BattleMenu_Run: ; 3e489
 	call Function30b4
-	ld a, $3
+	ld a, $3 
 	ld [$cfa9], a
 	ld hl, BattleMonSpeed
 	ld de, EnemyMonSpeed

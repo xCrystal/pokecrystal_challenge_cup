@@ -17,6 +17,7 @@ UnknownScript_0x7abb3: ; 0x7abb3
 ; 0x7abb4
 
 UnknownScript_0x7abb4: ; 0x7abb4
+	setevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	special $004a
 	setevent $0007
 	checkevent $0036
@@ -144,7 +145,7 @@ KrissHouse2F_MapEventHeader: ; 0x7ac99
 
 	; warps
 	db 1
-	warp_def $0, $7, 3, GROUP_KRISS_HOUSE_1F, MAP_KRISS_HOUSE_1F
+	warp_def $0, $7, 1, GROUP_CHERRYGROVE_POKECENTER_1F, MAP_CHERRYGROVE_POKECENTER_1F
 
 	; xy triggers
 	db 0
