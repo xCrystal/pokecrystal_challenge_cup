@@ -160,7 +160,7 @@ GenMoves:
 	jr nz, .stillEvoData
 	
 ; hl now points to start of move data	
-	ld bc, wBattle
+	ld bc, wBattle ; save all the compatible moves in an array starting at wBattle
 .copyLevelUpMove
 	inc hl ; skip level byte
 	ld a, [hl]
@@ -186,6 +186,7 @@ GenMoves:
 	
 ; hl now points to EggMoves of [PartySpeciesN]	
 	pop bc
+	push bc
 .copyEggMove
 	ld a, [hl]
 	ld [bc], a 
@@ -194,8 +195,47 @@ GenMoves:
 	inc hl	
 	cp $ff ; more egg moves?
 	jr nz, .copyEggMove
+	
+; WIP
+	ld a, [$cff8]
+	and a
+	jp z, .getMoves ; selected option was not to include TMs/HMs
+	
+	ld hl, BulbasaurBaseData2	
+	ld a, [de] ; ld a, [PartySpeciesN]
+	ld bc, IvysaurBaseData2 - BulbasaurBaseData2
+	
+.notThisMon	
+	add hl, bc
+	dec a
+	jr nz, .notThisMon
+	
+	ld bc, 24 
+	add hl, bc ; move to TMHM bit masks
+	pop bc ; restore position in the move array (wBattle)
+	ld a, [hl]
+	ld d, 8 ; eight bits per byte
+	ld e, 8 ; eight TMHM bytes
+	jr .nextBit
+
+.nextArray
+	inc hl
+	ld a, [hl]
+	ld d, 8 ; initialize to first bit again
+
+.nextBit	
+	bit 0, a
+	call z, copyTMHM ; was that bit set? if so, copy the move to the array
+	srl a ; move to next TMHM (next bit)
+	dec d
+	jr nz, .nextBit
+	dec e
+	jr nz, .nextArray
+	
+; /WIP
 
 .getMoves
+	pop bc
 	pop af ; restore number of Pokémon
 	push af 
 	ld bc, PartyMon1Moves
