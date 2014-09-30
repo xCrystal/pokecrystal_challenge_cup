@@ -126,15 +126,16 @@ Joypad:: ; 935
 	and SELECT | START | D_RIGHT
 	cp  SELECT | START | D_RIGHT
 	jr z, .doNonTMHM
-	
+		
 	ld a, b
 	and SELECT | START | D_LEFT
 	cp  SELECT | START | D_LEFT
 	jr nz, .done3
-      ; jr .doTMHM
+
 .doTMHM	
 	ld a, [$cff8] 
 	inc a
+	ld [$cff8], a
 	
 .doNonTMHM	
 	ld a, [IsInBattle]

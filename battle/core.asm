@@ -5120,11 +5120,11 @@ BattleMenu: ; 3e139
 	cp $1
 	jp z, BattleMenu_Fight
 	cp $3
-	jp z, BattleMenu_Pack
+	jp z, BattleMenu_Fight
 	cp $2
 	jp z, BattleMenu_PKMN
 	cp $4
-	jp z, BattleMenu_Run
+	jp z, BattleMenu_PKMN
 	jr .loop
 ; 3e192
 

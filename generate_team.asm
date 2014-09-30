@@ -1,6 +1,3 @@
-;TODO: Reformat the tmhm list
-
-
 GenerateTeam:
 	call ResetRNs
 
@@ -169,6 +166,9 @@ GenMoves:
 	ld a, [hl]
 	ld [bc], a 
 	inc bc 
+	ld [bc], a 
+	inc bc ; Level up moves as well as egg moves get copied twice
+		   ; so that they appear more commonly than TM/HM moves
 	inc hl 
 	ld a, [hl]
 	and a ; more level-up moves?
@@ -189,11 +189,12 @@ GenMoves:
 	
 ; hl now points to EggMoves of [PartySpeciesN]	
 	pop bc
-	push bc
 .copyEggMove
 	ld a, [hl]
 	ld [bc], a 
 	inc bc
+	ld [bc], a 
+	inc bc	
 	ld a, [hl]
 	inc hl	
 	cp $ff ; more egg moves?
@@ -206,6 +207,8 @@ GenMoves:
 	
 	ld hl, BulbasaurBaseData2	
 	ld a, [de] ; ld a, [PartySpeciesN]
+	dec a
+	push bc
 	ld bc, IvysaurBaseData2 - BulbasaurBaseData2
 	
 .notThisMon	
@@ -228,7 +231,7 @@ GenMoves:
 
 .nextBit	
 	bit 0, a
-	call z, CopyTMHM ; was that bit set? if so, copy the move to the array
+	call nz, CopyTMHM ; was that bit set? if so, copy the move to the array
 	srl a ; move to next TMHM (next bit)
 	dec d
 	jr nz, .nextBit
@@ -238,7 +241,6 @@ GenMoves:
 ; /WIP
 
 .getMoves
-	pop bc
 	pop af ; restore number of Pokémon
 	push af 
 	ld bc, PartyMon1Moves
@@ -502,72 +504,93 @@ IsSpecialCase:
 	
 	
 CopyTMHM:
-; current move is at 72 - (e * 8 + d)	
+
+	push af
+	push de
+	push hl
 	
-	; stuff
+	; current move is at TMHMList + 72 - (e * 8 + d)	
+	; copy it to bc and inc bc
+	ld hl, TMHMList
+	sla e 
+	sla e
+	sla e ; e * 8
+	ld a, 72
+	sub e
+	sub d
+	ld d, 0
+	ld e, a
+	add hl, de
+	ld a, [hl]
+	ld [bc], a
+	inc bc
+	
+	pop hl
+	pop de
+	pop af
 	ret	
 	
 TMHMList:
-db	DYNAMICPUNCH
-db	HEADBUTT
-db	CURSE
-db	ROLLOUT
-db	ROAR
-db	TOXIC
-db	ZAP CANNON
-db	ROCK SMASH
-db	PSYCH UP
-db	HIDDEN POWER
-db	SUNNY DAY
-db	SWEET SCENT
-db	SNORE
-db	BLIZZARD
-db	HYPER BEAM
-db	ICY WIND
-db	PROTECT
-db	RAIN DANCE
-db	GIGA DRAIN
-db	ENDURE
-db	FRUSTRATION
-db	SOLARBEAM
-db	IRON TAIL
-db	DRAGONBREATH
-db	THUNDER
-db	EARTHQUAKE
-db	RETURN
-db	DIG
-db	PSYCHIC
-db	SHADOW BALL
-db	MUD-SLAP
-db	DOUBLE TEAM
-db	ICE PUNCH
-db	SWAGGER
-db	SLEEP TALK
-db	SLUDGE BOMB
-db	SANDSTORM
-db	FIRE BLAST
-db	SWIFT
-db	DEFENSE CURL
-db	THUNDERPUNCH
-db	DREAM EATER
-db	DETECT
-db	REST
-db	ATTRACT
-db	THIEF
-db	STEEL WING
-db	FIRE PUNCH
-db	FURY CUTTER
-db	NIGHTMARE
-db	CUT
-db	FLY
-db	SURF
-db	STRENGTH
-db	FLASH
-db	WHIRLPOOL
-db	WATERFALL
-	db FLAMETHROWER?
-	db ICE_BEAM?
-	db THUNDERBOLD?
+	db DYNAMICPUNCH
+	db HEADBUTT
+	db CURSE
+	db ROLLOUT
+	db ROAR
+	db TOXIC
+	db ZAP_CANNON
+	db ROCK_SMASH
+	db PSYCH_UP
+	db HIDDEN_POWER
+	db SUNNY_DAY
+	db SWEET_SCENT
+	db SNORE
+	db BLIZZARD
+	db HYPER_BEAM
+	db ICY_WIND
+	db PROTECT
+	db RAIN_DANCE
+	db GIGA_DRAIN
+	db ENDURE
+	db FRUSTRATION
+	db SOLARBEAM
+	db IRON_TAIL
+	db DRAGONBREATH
+	db THUNDER
+	db EARTHQUAKE
+	db RETURN
+	db DIG
+	db PSYCHIC_M
+	db SHADOW_BALL
+	db MUD_SLAP
+	db DOUBLE_TEAM
+	db ICE_PUNCH
+	db SWAGGER
+	db SLEEP_TALK
+	db SLUDGE_BOMB
+	db SANDSTORM
+	db FIRE_BLAST
+	db SWIFT
+	db DEFENSE_CURL
+	db THUNDERPUNCH
+	db DREAM_EATER
+	db DETECT
+	db REST
+	db ATTRACT
+	db THIEF
+	db STEEL_WING
+	db FIRE_PUNCH
+	db FURY_CUTTER
+	db NIGHTMARE
+	db CUT
+	db FLY
+	db SURF
+	db STRENGTH
+	db FLASH
+	db WHIRLPOOL
+	db WATERFALL
+	db FLAMETHROWER
+	db THUNDERBOLT
+	db ICE_BEAM
 	db 0, 0, 0, 0
 
 

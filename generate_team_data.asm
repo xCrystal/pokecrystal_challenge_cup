@@ -1,5 +1,3 @@
-;TODO: replace all instances of BaseData:: with BaseData2::
-
 INCLUDE "pokecrystal.asm"
 
 EggMovePointers2:: ; 0x23b11
@@ -4732,7 +4730,7 @@ CelebiEvosAttacks:
 	
 
 
-BulbasaurBaseData:: ; 0x51424
+BulbasaurBaseData2:: ; 0x51424
 	db BULBASAUR ; 001
 
 	db  45,  49,  49,  45,  65,  65
@@ -4763,7 +4761,7 @@ BulbasaurBaseData:: ; 0x51424
 	db %00000000
 	; end
 
-IvysaurBaseData:: ; 0x51444
+IvysaurBaseData2:: ; 0x51444
 	db IVYSAUR ; 002
 
 	db  60,  62,  63,  60,  80,  80
@@ -4794,7 +4792,7 @@ IvysaurBaseData:: ; 0x51444
 	db %00000000
 	; end
 
-VenusaurBaseData:: ; 0x51464
+VenusaurBaseData2:: ; 0x51464
 	db VENUSAUR ; 003
 
 	db  80,  82,  83,  80, 100, 100
@@ -4825,7 +4823,7 @@ VenusaurBaseData:: ; 0x51464
 	db %00000000
 	; end
 
-CharmanderBaseData:: ; 0x51484
+CharmanderBaseData2:: ; 0x51484
 	db CHARMANDER ; 004
 
 	db  39,  52,  43,  65,  60,  50
@@ -4856,7 +4854,7 @@ CharmanderBaseData:: ; 0x51484
 	db %00000010
 	; end
 
-CharmeleonBaseData:: ; 0x514a4
+CharmeleonBaseData2:: ; 0x514a4
 	db CHARMELEON ; 005
 
 	db  58,  64,  58,  80,  80,  65
@@ -4887,7 +4885,7 @@ CharmeleonBaseData:: ; 0x514a4
 	db %00000010
 	; end
 
-CharizardBaseData:: ; 0x514c4
+CharizardBaseData2:: ; 0x514c4
 	db CHARIZARD ; 006
 
 	db  78,  84,  78, 100, 109,  85
@@ -4918,7 +4916,7 @@ CharizardBaseData:: ; 0x514c4
 	db %00000010
 	; end
 
-SquirtleBaseData:: ; 0x514e4
+SquirtleBaseData2:: ; 0x514e4
 	db SQUIRTLE ; 007
 
 	db  44,  48,  65,  43,  50,  64
@@ -4949,7 +4947,7 @@ SquirtleBaseData:: ; 0x514e4
 	db %00001001
 	; end
 
-WartortleBaseData:: ; 0x51504
+WartortleBaseData2:: ; 0x51504
 	db WARTORTLE ; 008
 
 	db  59,  63,  80,  58,  65,  80
@@ -4980,7 +4978,7 @@ WartortleBaseData:: ; 0x51504
 	db %00001001
 	; end
 
-BlastoiseBaseData:: ; 0x51524
+BlastoiseBaseData2:: ; 0x51524
 	db BLASTOISE ; 009
 
 	db  79,  83, 100,  78,  85, 105
@@ -5011,7 +5009,7 @@ BlastoiseBaseData:: ; 0x51524
 	db %00001001
 	; end
 
-CaterpieBaseData:: ; 0x51544
+CaterpieBaseData2:: ; 0x51544
 	db CATERPIE ; 010
 
 	db  45,  30,  35,  45,  20,  20
@@ -5042,7 +5040,7 @@ CaterpieBaseData:: ; 0x51544
 	db %00000000
 	; end
 
-MetapodBaseData:: ; 0x51564
+MetapodBaseData2:: ; 0x51564
 	db METAPOD ; 011
 
 	db  50,  20,  55,  30,  25,  25
@@ -5073,7 +5071,7 @@ MetapodBaseData:: ; 0x51564
 	db %00000000
 	; end
 
-ButterfreeBaseData:: ; 0x51584
+ButterfreeBaseData2:: ; 0x51584
 	db BUTTERFREE ; 012
 
 	db  60,  45,  50,  70,  80,  80
@@ -5104,7 +5102,7 @@ ButterfreeBaseData:: ; 0x51584
 	db %00000000
 	; end
 
-WeedleBaseData:: ; 0x515a4
+WeedleBaseData2:: ; 0x515a4
 	db WEEDLE ; 013
 
 	db  40,  35,  30,  50,  20,  20
@@ -5135,7 +5133,7 @@ WeedleBaseData:: ; 0x515a4
 	db %00000000
 	; end
 
-KakunaBaseData:: ; 0x515c4
+KakunaBaseData2:: ; 0x515c4
 	db KAKUNA ; 014
 
 	db  45,  25,  50,  35,  25,  25
@@ -5166,7 +5164,7 @@ KakunaBaseData:: ; 0x515c4
 	db %00000000
 	; end
 
-BeedrillBaseData:: ; 0x515e4
+BeedrillBaseData2:: ; 0x515e4
 	db BEEDRILL ; 015
 
 	db  65,  80,  40,  75,  45,  80
@@ -5197,7 +5195,7 @@ BeedrillBaseData:: ; 0x515e4
 	db %00000000
 	; end
 
-PidgeyBaseData:: ; 0x51604
+PidgeyBaseData2:: ; 0x51604
 	db PIDGEY ; 016
 
 	db  40,  45,  40,  56,  35,  35
@@ -5228,7 +5226,7 @@ PidgeyBaseData:: ; 0x51604
 	db %00000000
 	; end
 
-PidgeottoBaseData:: ; 0x51624
+PidgeottoBaseData2:: ; 0x51624
 	db PIDGEOTTO ; 017
 
 	db  63,  60,  55,  71,  50,  50
@@ -5259,7 +5257,7 @@ PidgeottoBaseData:: ; 0x51624
 	db %00000000
 	; end
 
-PidgeotBaseData:: ; 0x51644
+PidgeotBaseData2:: ; 0x51644
 	db PIDGEOT ; 018
 
 	db  83,  80,  75,  91,  70,  70
@@ -5290,7 +5288,7 @@ PidgeotBaseData:: ; 0x51644
 	db %00000000
 	; end
 
-RattataBaseData:: ; 0x51664
+RattataBaseData2:: ; 0x51664
 	db RATTATA ; 019
 
 	db  30,  56,  35,  72,  25,  35
@@ -5321,7 +5319,7 @@ RattataBaseData:: ; 0x51664
 	db %00000000
 	; end
 
-RaticateBaseData:: ; 0x51684
+RaticateBaseData2:: ; 0x51684
 	db RATICATE ; 020
 
 	db  55,  81,  60,  97,  50,  70
@@ -5352,7 +5350,7 @@ RaticateBaseData:: ; 0x51684
 	db %00001100
 	; end
 
-SpearowBaseData:: ; 0x516a4
+SpearowBaseData2:: ; 0x516a4
 	db SPEAROW ; 021
 
 	db  40,  60,  30,  70,  31,  31
@@ -5383,7 +5381,7 @@ SpearowBaseData:: ; 0x516a4
 	db %00000000
 	; end
 
-FearowBaseData:: ; 0x516c4
+FearowBaseData2:: ; 0x516c4
 	db FEAROW ; 022
 
 	db  65,  90,  65, 100,  61,  61
@@ -5414,7 +5412,7 @@ FearowBaseData:: ; 0x516c4
 	db %00000000
 	; end
 
-EkansBaseData:: ; 0x516e4
+EkansBaseData2:: ; 0x516e4
 	db EKANS ; 023
 
 	db  35,  60,  44,  55,  40,  54
@@ -5445,7 +5443,7 @@ EkansBaseData:: ; 0x516e4
 	db %00000000
 	; end
 
-ArbokBaseData:: ; 0x51704
+ArbokBaseData2:: ; 0x51704
 	db ARBOK ; 024
 
 	db  60,  85,  69,  80,  65,  79
@@ -5476,7 +5474,7 @@ ArbokBaseData:: ; 0x51704
 	db %00000000
 	; end
 
-PikachuBaseData:: ; 0x51724
+PikachuBaseData2:: ; 0x51724
 	db PIKACHU ; 025
 
 	db  35,  55,  30,  90,  50,  40
@@ -5507,7 +5505,7 @@ PikachuBaseData:: ; 0x51724
 	db %00000100
 	; end
 
-RaichuBaseData:: ; 0x51744
+RaichuBaseData2:: ; 0x51744
 	db RAICHU ; 026
 
 	db  60,  90,  55, 100,  90,  80
@@ -5538,7 +5536,7 @@ RaichuBaseData:: ; 0x51744
 	db %00000100
 	; end
 
-SandshrewBaseData:: ; 0x51764
+SandshrewBaseData2:: ; 0x51764
 	db SANDSHREW ; 027
 
 	db  50,  75,  85,  40,  20,  30
@@ -5569,7 +5567,7 @@ SandshrewBaseData:: ; 0x51764
 	db %00000000
 	; end
 
-SandslashBaseData:: ; 0x51784
+SandslashBaseData2:: ; 0x51784
 	db SANDSLASH ; 028
 
 	db  75, 100, 110,  65,  45,  55
@@ -5600,7 +5598,7 @@ SandslashBaseData:: ; 0x51784
 	db %00000000
 	; end
 
-Nidoran_FBaseData:: ; 0x517a4
+Nidoran_FBaseData2:: ; 0x517a4
 	db NIDORAN_F ; 029
 
 	db  55,  47,  52,  41,  40,  40
@@ -5631,7 +5629,7 @@ Nidoran_FBaseData:: ; 0x517a4
 	db %00000100
 	; end
 
-NidorinaBaseData:: ; 0x517c4
+NidorinaBaseData2:: ; 0x517c4
 	db NIDORINA ; 030
 
 	db  70,  62,  67,  56,  55,  55
@@ -5662,7 +5660,7 @@ NidorinaBaseData:: ; 0x517c4
 	db %00001100
 	; end
 
-NidoqueenBaseData:: ; 0x517e4
+NidoqueenBaseData2:: ; 0x517e4
 	db NIDOQUEEN ; 031
 
 	db  90,  82,  87,  76,  75,  85
@@ -5693,7 +5691,7 @@ NidoqueenBaseData:: ; 0x517e4
 	db %00001110
 	; end
 
-Nidoran_MBaseData:: ; 0x51804
+Nidoran_MBaseData2:: ; 0x51804
 	db NIDORAN_M ; 032
 
 	db  46,  57,  40,  50,  40,  40
@@ -5724,7 +5722,7 @@ Nidoran_MBaseData:: ; 0x51804
 	db %00000100
 	; end
 
-NidorinoBaseData:: ; 0x51824
+NidorinoBaseData2:: ; 0x51824
 	db NIDORINO ; 033
 
 	db  61,  72,  57,  65,  55,  55
@@ -5755,7 +5753,7 @@ NidorinoBaseData:: ; 0x51824
 	db %00001100
 	; end
 
-NidokingBaseData:: ; 0x51844
+NidokingBaseData2:: ; 0x51844
 	db NIDOKING ; 034
 
 	db  81,  92,  77,  85,  85,  75
@@ -5786,7 +5784,7 @@ NidokingBaseData:: ; 0x51844
 	db %00001110
 	; end
 
-ClefairyBaseData:: ; 0x51864
+ClefairyBaseData2:: ; 0x51864
 	db CLEFAIRY ; 035
 
 	db  70,  45,  48,  35,  60,  65
@@ -5817,7 +5815,7 @@ ClefairyBaseData:: ; 0x51864
 	db %00001110
 	; end
 
-ClefableBaseData:: ; 0x51884
+ClefableBaseData2:: ; 0x51884
 	db CLEFABLE ; 036
 
 	db  95,  70,  73,  60,  85,  90
@@ -5848,7 +5846,7 @@ ClefableBaseData:: ; 0x51884
 	db %00001110
 	; end
 
-VulpixBaseData:: ; 0x518a4
+VulpixBaseData2:: ; 0x518a4
 	db VULPIX ; 037
 
 	db  38,  41,  40,  65,  50,  65
@@ -5879,7 +5877,7 @@ VulpixBaseData:: ; 0x518a4
 	db %00000010
 	; end
 
-NinetalesBaseData:: ; 0x518c4
+NinetalesBaseData2:: ; 0x518c4
 	db NINETALES ; 038
 
 	db  73,  76,  75, 100,  81, 100
@@ -5910,7 +5908,7 @@ NinetalesBaseData:: ; 0x518c4
 	db %00000010
 	; end
 
-JigglypuffBaseData:: ; 0x518e4
+JigglypuffBaseData2:: ; 0x518e4
 	db JIGGLYPUFF ; 039
 
 	db 115,  45,  20,  20,  45,  25
@@ -5941,7 +5939,7 @@ JigglypuffBaseData:: ; 0x518e4
 	db %00001110
 	; end
 
-WigglytuffBaseData:: ; 0x51904
+WigglytuffBaseData2:: ; 0x51904
 	db WIGGLYTUFF ; 040
 
 	db 140,  70,  45,  45,  75,  50
@@ -5972,7 +5970,7 @@ WigglytuffBaseData:: ; 0x51904
 	db %00001110
 	; end
 
-ZubatBaseData:: ; 0x51924
+ZubatBaseData2:: ; 0x51924
 	db ZUBAT ; 041
 
 	db  40,  45,  35,  55,  30,  40
@@ -6003,7 +6001,7 @@ ZubatBaseData:: ; 0x51924
 	db %00000000
 	; end
 
-GolbatBaseData:: ; 0x51944
+GolbatBaseData2:: ; 0x51944
 	db GOLBAT ; 042
 
 	db  75,  80,  70,  90,  65,  75
@@ -6034,7 +6032,7 @@ GolbatBaseData:: ; 0x51944
 	db %00000000
 	; end
 
-OddishBaseData:: ; 0x51964
+OddishBaseData2:: ; 0x51964
 	db ODDISH ; 043
 
 	db  45,  50,  55,  30,  75,  65
@@ -6065,7 +6063,7 @@ OddishBaseData:: ; 0x51964
 	db %00000000
 	; end
 
-GloomBaseData:: ; 0x51984
+GloomBaseData2:: ; 0x51984
 	db GLOOM ; 044
 
 	db  60,  65,  70,  40,  85,  75
@@ -6096,7 +6094,7 @@ GloomBaseData:: ; 0x51984
 	db %00000000
 	; end
 
-VileplumeBaseData:: ; 0x519a4
+VileplumeBaseData2:: ; 0x519a4
 	db VILEPLUME ; 045
 
 	db  75,  80,  85,  50, 100,  90
@@ -6127,7 +6125,7 @@ VileplumeBaseData:: ; 0x519a4
 	db %00000000
 	; end
 
-ParasBaseData:: ; 0x519c4
+ParasBaseData2:: ; 0x519c4
 	db PARAS ; 046
 
 	db  35,  70,  55,  25,  45,  55
@@ -6158,7 +6156,7 @@ ParasBaseData:: ; 0x519c4
 	db %00000000
 	; end
 
-ParasectBaseData:: ; 0x519e4
+ParasectBaseData2:: ; 0x519e4
 	db PARASECT ; 047
 
 	db  60,  95,  80,  30,  60,  80
@@ -6189,7 +6187,7 @@ ParasectBaseData:: ; 0x519e4
 	db %00000000
 	; end
 
-VenonatBaseData:: ; 0x51a04
+VenonatBaseData2:: ; 0x51a04
 	db VENONAT ; 048
 
 	db  60,  55,  50,  45,  40,  55
@@ -6220,7 +6218,7 @@ VenonatBaseData:: ; 0x51a04
 	db %00000000
 	; end
 
-VenomothBaseData:: ; 0x51a24
+VenomothBaseData2:: ; 0x51a24
 	db VENOMOTH ; 049
 
 	db  70,  65,  60,  90,  90,  75
@@ -6251,7 +6249,7 @@ VenomothBaseData:: ; 0x51a24
 	db %00000000
 	; end
 
-DiglettBaseData:: ; 0x51a44
+DiglettBaseData2:: ; 0x51a44
 	db DIGLETT ; 050
 
 	db  10,  55,  25,  95,  35,  45
@@ -6282,7 +6280,7 @@ DiglettBaseData:: ; 0x51a44
 	db %00000000
 	; end
 
-DugtrioBaseData:: ; 0x51a64
+DugtrioBaseData2:: ; 0x51a64
 	db DUGTRIO ; 051
 
 	db  35,  80,  50, 120,  50,  70
@@ -6313,7 +6311,7 @@ DugtrioBaseData:: ; 0x51a64
 	db %00000000
 	; end
 
-MeowthBaseData:: ; 0x51a84
+MeowthBaseData2:: ; 0x51a84
 	db MEOWTH ; 052
 
 	db  40,  45,  35,  90,  40,  40
@@ -6344,7 +6342,7 @@ MeowthBaseData:: ; 0x51a84
 	db %00000100
 	; end
 
-PersianBaseData:: ; 0x51aa4
+PersianBaseData2:: ; 0x51aa4
 	db PERSIAN ; 053
 
 	db  65,  70,  60, 115,  65,  65
@@ -6375,7 +6373,7 @@ PersianBaseData:: ; 0x51aa4
 	db %00000100
 	; end
 
-PsyduckBaseData:: ; 0x51ac4
+PsyduckBaseData2:: ; 0x51ac4
 	db PSYDUCK ; 054
 
 	db  50,  52,  48,  55,  65,  50
@@ -6406,7 +6404,7 @@ PsyduckBaseData:: ; 0x51ac4
 	db %00001001
 	; end
 
-GolduckBaseData:: ; 0x51ae4
+GolduckBaseData2:: ; 0x51ae4
 	db GOLDUCK ; 055
 
 	db  80,  82,  78,  85,  95,  80
@@ -6437,7 +6435,7 @@ GolduckBaseData:: ; 0x51ae4
 	db %00001001
 	; end
 
-MankeyBaseData:: ; 0x51b04
+MankeyBaseData2:: ; 0x51b04
 	db MANKEY ; 056
 
 	db  40,  80,  35,  70,  35,  45
@@ -6468,7 +6466,7 @@ MankeyBaseData:: ; 0x51b04
 	db %00000100
 	; end
 
-PrimeapeBaseData:: ; 0x51b24
+PrimeapeBaseData2:: ; 0x51b24
 	db PRIMEAPE ; 057
 
 	db  65, 105,  60,  95,  60,  70
@@ -6499,7 +6497,7 @@ PrimeapeBaseData:: ; 0x51b24
 	db %00000100
 	; end
 
-GrowlitheBaseData:: ; 0x51b44
+GrowlitheBaseData2:: ; 0x51b44
 	db GROWLITHE ; 058
 
 	db  55,  70,  45,  60,  70,  50
@@ -6530,7 +6528,7 @@ GrowlitheBaseData:: ; 0x51b44
 	db %00000010
 	; end
 
-ArcanineBaseData:: ; 0x51b64
+ArcanineBaseData2:: ; 0x51b64
 	db ARCANINE ; 059
 
 	db  90, 110,  80,  95, 100,  80
@@ -6561,7 +6559,7 @@ ArcanineBaseData:: ; 0x51b64
 	db %00000010
 	; end
 
-PoliwagBaseData:: ; 0x51b84
+PoliwagBaseData2:: ; 0x51b84
 	db POLIWAG ; 060
 
 	db  40,  50,  40,  90,  40,  40
@@ -6592,7 +6590,7 @@ PoliwagBaseData:: ; 0x51b84
 	db %00001001
 	; end
 
-PoliwhirlBaseData:: ; 0x51ba4
+PoliwhirlBaseData2:: ; 0x51ba4
 	db POLIWHIRL ; 061
 
 	db  65,  65,  65,  90,  50,  50
@@ -6623,7 +6621,7 @@ PoliwhirlBaseData:: ; 0x51ba4
 	db %00001001
 	; end
 
-PoliwrathBaseData:: ; 0x51bc4
+PoliwrathBaseData2:: ; 0x51bc4
 	db POLIWRATH ; 062
 
 	db  90,  85,  95,  70,  70,  90
@@ -6654,7 +6652,7 @@ PoliwrathBaseData:: ; 0x51bc4
 	db %00001001
 	; end
 
-AbraBaseData:: ; 0x51be4
+AbraBaseData2:: ; 0x51be4
 	db ABRA ; 063
 
 	db  25,  20,  15,  90, 105,  55
@@ -6685,7 +6683,7 @@ AbraBaseData:: ; 0x51be4
 	db %00000000
 	; end
 
-KadabraBaseData:: ; 0x51c04
+KadabraBaseData2:: ; 0x51c04
 	db KADABRA ; 064
 
 	db  40,  35,  30, 105, 120,  70
@@ -6716,7 +6714,7 @@ KadabraBaseData:: ; 0x51c04
 	db %00000000
 	; end
 
-AlakazamBaseData:: ; 0x51c24
+AlakazamBaseData2:: ; 0x51c24
 	db ALAKAZAM ; 065
 
 	db  55,  50,  45, 120, 135,  85
@@ -6747,7 +6745,7 @@ AlakazamBaseData:: ; 0x51c24
 	db %00000000
 	; end
 
-MachopBaseData:: ; 0x51c44
+MachopBaseData2:: ; 0x51c44
 	db MACHOP ; 066
 
 	db  70,  80,  50,  35,  35,  35
@@ -6778,7 +6776,7 @@ MachopBaseData:: ; 0x51c44
 	db %00000010
 	; end
 
-MachokeBaseData:: ; 0x51c64
+MachokeBaseData2:: ; 0x51c64
 	db MACHOKE ; 067
 
 	db  80, 100,  70,  45,  50,  60
@@ -6809,7 +6807,7 @@ MachokeBaseData:: ; 0x51c64
 	db %00000010
 	; end
 
-MachampBaseData:: ; 0x51c84
+MachampBaseData2:: ; 0x51c84
 	db MACHAMP ; 068
 
 	db  90, 130,  80,  55,  65,  85
@@ -6840,7 +6838,7 @@ MachampBaseData:: ; 0x51c84
 	db %00000010
 	; end
 
-BellsproutBaseData:: ; 0x51ca4
+BellsproutBaseData2:: ; 0x51ca4
 	db BELLSPROUT ; 069
 
 	db  50,  75,  35,  40,  70,  30
@@ -6871,7 +6869,7 @@ BellsproutBaseData:: ; 0x51ca4
 	db %00000000
 	; end
 
-WeepinbellBaseData:: ; 0x51cc4
+WeepinbellBaseData2:: ; 0x51cc4
 	db WEEPINBELL ; 070
 
 	db  65,  90,  50,  55,  85,  45
@@ -6902,7 +6900,7 @@ WeepinbellBaseData:: ; 0x51cc4
 	db %00000000
 	; end
 
-VictreebelBaseData:: ; 0x51ce4
+VictreebelBaseData2:: ; 0x51ce4
 	db VICTREEBEL ; 071
 
 	db  80, 105,  65,  70, 100,  60
@@ -6933,7 +6931,7 @@ VictreebelBaseData:: ; 0x51ce4
 	db %00000000
 	; end
 
-TentacoolBaseData:: ; 0x51d04
+TentacoolBaseData2:: ; 0x51d04
 	db TENTACOOL ; 072
 
 	db  40,  40,  35,  70,  50, 100
@@ -6964,7 +6962,7 @@ TentacoolBaseData:: ; 0x51d04
 	db %00001000
 	; end
 
-TentacruelBaseData:: ; 0x51d24
+TentacruelBaseData2:: ; 0x51d24
 	db TENTACRUEL ; 073
 
 	db  80,  70,  65, 100,  80, 120
@@ -6995,7 +6993,7 @@ TentacruelBaseData:: ; 0x51d24
 	db %00001000
 	; end
 
-GeodudeBaseData:: ; 0x51d44
+GeodudeBaseData2:: ; 0x51d44
 	db GEODUDE ; 074
 
 	db  40,  80, 100,  20,  30,  30
@@ -7026,7 +7024,7 @@ GeodudeBaseData:: ; 0x51d44
 	db %00000010
 	; end
 
-GravelerBaseData:: ; 0x51d64
+GravelerBaseData2:: ; 0x51d64
 	db GRAVELER ; 075
 
 	db  55,  95, 115,  35,  45,  45
@@ -7057,7 +7055,7 @@ GravelerBaseData:: ; 0x51d64
 	db %00000010
 	; end
 
-GolemBaseData:: ; 0x51d84
+GolemBaseData2:: ; 0x51d84
 	db GOLEM ; 076
 
 	db  80, 110, 130,  45,  55,  65
@@ -7088,7 +7086,7 @@ GolemBaseData:: ; 0x51d84
 	db %00000010
 	; end
 
-PonytaBaseData:: ; 0x51da4
+PonytaBaseData2:: ; 0x51da4
 	db PONYTA ; 077
 
 	db  50,  85,  55,  90,  65,  65
@@ -7119,7 +7117,7 @@ PonytaBaseData:: ; 0x51da4
 	db %00000010
 	; end
 
-RapidashBaseData:: ; 0x51dc4
+RapidashBaseData2:: ; 0x51dc4
 	db RAPIDASH ; 078
 
 	db  65, 100,  70, 105,  80,  80
@@ -7150,7 +7148,7 @@ RapidashBaseData:: ; 0x51dc4
 	db %00000010
 	; end
 
-SlowpokeBaseData:: ; 0x51de4
+SlowpokeBaseData2:: ; 0x51de4
 	db SLOWPOKE ; 079
 
 	db  90,  65,  65,  15,  40,  40
@@ -7181,7 +7179,7 @@ SlowpokeBaseData:: ; 0x51de4
 	db %00001010
 	; end
 
-SlowbroBaseData:: ; 0x51e04
+SlowbroBaseData2:: ; 0x51e04
 	db SLOWBRO ; 080
 
 	db  95,  75, 110,  30, 100,  80
@@ -7212,7 +7210,7 @@ SlowbroBaseData:: ; 0x51e04
 	db %00001010
 	; end
 
-MagnemiteBaseData:: ; 0x51e24
+MagnemiteBaseData2:: ; 0x51e24
 	db MAGNEMITE ; 081
 
 	db  25,  35,  70,  45,  95,  55
@@ -7243,7 +7241,7 @@ MagnemiteBaseData:: ; 0x51e24
 	db %00000100
 	; end
 
-MagnetonBaseData:: ; 0x51e44
+MagnetonBaseData2:: ; 0x51e44
 	db MAGNETON ; 082
 
 	db  50,  60,  95,  70, 120,  70
@@ -7274,7 +7272,7 @@ MagnetonBaseData:: ; 0x51e44
 	db %00000100
 	; end
 
-Farfetch_DBaseData:: ; 0x51e64
+Farfetch_DBaseData2:: ; 0x51e64
 	db FARFETCH_D ; 083
 
 	db  52,  65,  55,  60,  58,  62
@@ -7305,7 +7303,7 @@ Farfetch_DBaseData:: ; 0x51e64
 	db %00000000
 	; end
 
-DoduoBaseData:: ; 0x51e84
+DoduoBaseData2:: ; 0x51e84
 	db DODUO ; 084
 
 	db  35,  85,  45,  75,  35,  35
@@ -7336,7 +7334,7 @@ DoduoBaseData:: ; 0x51e84
 	db %00000000
 	; end
 
-DodrioBaseData:: ; 0x51ea4
+DodrioBaseData2:: ; 0x51ea4
 	db DODRIO ; 085
 
 	db  60, 110,  70, 100,  60,  60
@@ -7367,7 +7365,7 @@ DodrioBaseData:: ; 0x51ea4
 	db %00000000
 	; end
 
-SeelBaseData:: ; 0x51ec4
+SeelBaseData2:: ; 0x51ec4
 	db SEEL ; 086
 
 	db  65,  45,  55,  45,  45,  70
@@ -7398,7 +7396,7 @@ SeelBaseData:: ; 0x51ec4
 	db %00001001
 	; end
 
-DewgongBaseData:: ; 0x51ee4
+DewgongBaseData2:: ; 0x51ee4
 	db DEWGONG ; 087
 
 	db  90,  70,  80,  70,  70,  95
@@ -7429,7 +7427,7 @@ DewgongBaseData:: ; 0x51ee4
 	db %00001001
 	; end
 
-GrimerBaseData:: ; 0x51f04
+GrimerBaseData2:: ; 0x51f04
 	db GRIMER ; 088
 
 	db  80,  80,  50,  25,  40,  50
@@ -7460,7 +7458,7 @@ GrimerBaseData:: ; 0x51f04
 	db %00000110
 	; end
 
-MukBaseData:: ; 0x51f24
+MukBaseData2:: ; 0x51f24
 	db MUK ; 089
 
 	db 105, 105,  75,  50,  65, 100
@@ -7491,7 +7489,7 @@ MukBaseData:: ; 0x51f24
 	db %00000110
 	; end
 
-ShellderBaseData:: ; 0x51f44
+ShellderBaseData2:: ; 0x51f44
 	db SHELLDER ; 090
 
 	db  30,  65, 100,  40,  45,  25
@@ -7522,7 +7520,7 @@ ShellderBaseData:: ; 0x51f44
 	db %00001000
 	; end
 
-CloysterBaseData:: ; 0x51f64
+CloysterBaseData2:: ; 0x51f64
 	db CLOYSTER ; 091
 
 	db  50,  95, 180,  70,  85,  45
@@ -7553,7 +7551,7 @@ CloysterBaseData:: ; 0x51f64
 	db %00001000
 	; end
 
-GastlyBaseData:: ; 0x51f84
+GastlyBaseData2:: ; 0x51f84
 	db GASTLY ; 092
 
 	db  30,  35,  30,  80, 100,  35
@@ -7584,7 +7582,7 @@ GastlyBaseData:: ; 0x51f84
 	db %00000100
 	; end
 
-HaunterBaseData:: ; 0x51fa4
+HaunterBaseData2:: ; 0x51fa4
 	db HAUNTER ; 093
 
 	db  45,  50,  45,  95, 115,  55
@@ -7615,7 +7613,7 @@ HaunterBaseData:: ; 0x51fa4
 	db %00000100
 	; end
 
-GengarBaseData:: ; 0x51fc4
+GengarBaseData2:: ; 0x51fc4
 	db GENGAR ; 094
 
 	db  60,  65,  60, 110, 130,  75
@@ -7646,7 +7644,7 @@ GengarBaseData:: ; 0x51fc4
 	db %00000100
 	; end
 
-OnixBaseData:: ; 0x51fe4
+OnixBaseData2:: ; 0x51fe4
 	db ONIX ; 095
 
 	db  35,  45, 160,  70,  30,  45
@@ -7677,7 +7675,7 @@ OnixBaseData:: ; 0x51fe4
 	db %00000000
 	; end
 
-DrowzeeBaseData:: ; 0x52004
+DrowzeeBaseData2:: ; 0x52004
 	db DROWZEE ; 096
 
 	db  60,  48,  45,  42,  43,  90
@@ -7708,7 +7706,7 @@ DrowzeeBaseData:: ; 0x52004
 	db %00000000
 	; end
 
-HypnoBaseData:: ; 0x52024
+HypnoBaseData2:: ; 0x52024
 	db HYPNO ; 097
 
 	db  85,  73,  70,  67,  73, 115
@@ -7739,7 +7737,7 @@ HypnoBaseData:: ; 0x52024
 	db %00000000
 	; end
 
-KrabbyBaseData:: ; 0x52044
+KrabbyBaseData2:: ; 0x52044
 	db KRABBY ; 098
 
 	db  30, 105,  90,  50,  25,  25
@@ -7770,7 +7768,7 @@ KrabbyBaseData:: ; 0x52044
 	db %00001000
 	; end
 
-KinglerBaseData:: ; 0x52064
+KinglerBaseData2:: ; 0x52064
 	db KINGLER ; 099
 
 	db  55, 130, 115,  75,  50,  50
@@ -7801,7 +7799,7 @@ KinglerBaseData:: ; 0x52064
 	db %00001000
 	; end
 
-VoltorbBaseData:: ; 0x52084
+VoltorbBaseData2:: ; 0x52084
 	db VOLTORB ; 100
 
 	db  40,  30,  50, 100,  55,  55
@@ -7832,7 +7830,7 @@ VoltorbBaseData:: ; 0x52084
 	db %00000100
 	; end
 
-ElectrodeBaseData:: ; 0x520a4
+ElectrodeBaseData2:: ; 0x520a4
 	db ELECTRODE ; 101
 
 	db  60,  50,  70, 140,  80,  80
@@ -7863,7 +7861,7 @@ ElectrodeBaseData:: ; 0x520a4
 	db %00000100
 	; end
 
-ExeggcuteBaseData:: ; 0x520c4
+ExeggcuteBaseData2:: ; 0x520c4
 	db EXEGGCUTE ; 102
 
 	db  60,  40,  80,  40,  60,  45
@@ -7894,7 +7892,7 @@ ExeggcuteBaseData:: ; 0x520c4
 	db %00000000
 	; end
 
-ExeggutorBaseData:: ; 0x520e4
+ExeggutorBaseData2:: ; 0x520e4
 	db EXEGGUTOR ; 103
 
 	db  95,  95,  85,  55, 125,  65
@@ -7925,7 +7923,7 @@ ExeggutorBaseData:: ; 0x520e4
 	db %00000000
 	; end
 
-CuboneBaseData:: ; 0x52104
+CuboneBaseData2:: ; 0x52104
 	db CUBONE ; 104
 
 	db  50,  50,  95,  35,  40,  50
@@ -7956,7 +7954,7 @@ CuboneBaseData:: ; 0x52104
 	db %00001010
 	; end
 
-MarowakBaseData:: ; 0x52124
+MarowakBaseData2:: ; 0x52124
 	db MAROWAK ; 105
 
 	db  60,  80, 110,  45,  50,  80
@@ -7987,7 +7985,7 @@ MarowakBaseData:: ; 0x52124
 	db %00001010
 	; end
 
-HitmonleeBaseData:: ; 0x52144
+HitmonleeBaseData2:: ; 0x52144
 	db HITMONLEE ; 106
 
 	db  50, 120,  53,  87,  35, 110
@@ -8018,7 +8016,7 @@ HitmonleeBaseData:: ; 0x52144
 	db %00000000
 	; end
 
-HitmonchanBaseData:: ; 0x52164
+HitmonchanBaseData2:: ; 0x52164
 	db HITMONCHAN ; 107
 
 	db  50, 105,  79,  76,  35, 110
@@ -8049,7 +8047,7 @@ HitmonchanBaseData:: ; 0x52164
 	db %00000000
 	; end
 
-LickitungBaseData:: ; 0x52184
+LickitungBaseData2:: ; 0x52184
 	db LICKITUNG ; 108
 
 	db  90,  55,  75,  30,  60,  75
@@ -8080,7 +8078,7 @@ LickitungBaseData:: ; 0x52184
 	db %00001110
 	; end
 
-KoffingBaseData:: ; 0x521a4
+KoffingBaseData2:: ; 0x521a4
 	db KOFFING ; 109
 
 	db  40,  65,  95,  35,  60,  45
@@ -8111,7 +8109,7 @@ KoffingBaseData:: ; 0x521a4
 	db %00000110
 	; end
 
-WeezingBaseData:: ; 0x521c4
+WeezingBaseData2:: ; 0x521c4
 	db WEEZING ; 110
 
 	db  65,  90, 120,  60,  85,  70
@@ -8142,7 +8140,7 @@ WeezingBaseData:: ; 0x521c4
 	db %00000110
 	; end
 
-RhyhornBaseData:: ; 0x521e4
+RhyhornBaseData2:: ; 0x521e4
 	db RHYHORN ; 111
 
 	db  80,  85,  95,  25,  30,  30
@@ -8173,7 +8171,7 @@ RhyhornBaseData:: ; 0x521e4
 	db %00001110
 	; end
 
-RhydonBaseData:: ; 0x52204
+RhydonBaseData2:: ; 0x52204
 	db RHYDON ; 112
 
 	db 105, 130, 120,  40,  45,  45
@@ -8204,7 +8202,7 @@ RhydonBaseData:: ; 0x52204
 	db %00001110
 	; end
 
-ChanseyBaseData:: ; 0x52224
+ChanseyBaseData2:: ; 0x52224
 	db CHANSEY ; 113
 
 	db 250,  05,  05,  50,  35, 105
@@ -8235,7 +8233,7 @@ ChanseyBaseData:: ; 0x52224
 	db %00001110
 	; end
 
-TangelaBaseData:: ; 0x52244
+TangelaBaseData2:: ; 0x52244
 	db TANGELA ; 114
 
 	db  65,  55, 115,  60, 100,  40
@@ -8266,7 +8264,7 @@ TangelaBaseData:: ; 0x52244
 	db %00000000
 	; end
 
-KangaskhanBaseData:: ; 0x52264
+KangaskhanBaseData2:: ; 0x52264
 	db KANGASKHAN ; 115
 
 	db 105,  95,  80,  90,  40,  80
@@ -8297,7 +8295,7 @@ KangaskhanBaseData:: ; 0x52264
 	db %00001110
 	; end
 
-HorseaBaseData:: ; 0x52284
+HorseaBaseData2:: ; 0x52284
 	db HORSEA ; 116
 
 	db  30,  40,  70,  60,  70,  25
@@ -8328,7 +8326,7 @@ HorseaBaseData:: ; 0x52284
 	db %00001001
 	; end
 
-SeadraBaseData:: ; 0x522a4
+SeadraBaseData2:: ; 0x522a4
 	db SEADRA ; 117
 
 	db  55,  65,  95,  85,  95,  45
@@ -8359,7 +8357,7 @@ SeadraBaseData:: ; 0x522a4
 	db %00001001
 	; end
 
-GoldeenBaseData:: ; 0x522c4
+GoldeenBaseData2:: ; 0x522c4
 	db GOLDEEN ; 118
 
 	db  45,  67,  60,  63,  35,  50
@@ -8390,7 +8388,7 @@ GoldeenBaseData:: ; 0x522c4
 	db %00001001
 	; end
 
-SeakingBaseData:: ; 0x522e4
+SeakingBaseData2:: ; 0x522e4
 	db SEAKING ; 119
 
 	db  80,  92,  65,  68,  65,  80
@@ -8421,7 +8419,7 @@ SeakingBaseData:: ; 0x522e4
 	db %00001001
 	; end
 
-StaryuBaseData:: ; 0x52304
+StaryuBaseData2:: ; 0x52304
 	db STARYU ; 120
 
 	db  30,  45,  55,  85,  70,  55
@@ -8452,7 +8450,7 @@ StaryuBaseData:: ; 0x52304
 	db %00001101
 	; end
 
-StarmieBaseData:: ; 0x52324
+StarmieBaseData2:: ; 0x52324
 	db STARMIE ; 121
 
 	db  60,  75,  85, 115, 100,  85
@@ -8483,7 +8481,7 @@ StarmieBaseData:: ; 0x52324
 	db %00001101
 	; end
 
-Mr__MimeBaseData:: ; 0x52344
+Mr__MimeBaseData2:: ; 0x52344
 	db MR__MIME ; 122
 
 	db  40,  45,  65,  90, 100, 120
@@ -8514,7 +8512,7 @@ Mr__MimeBaseData:: ; 0x52344
 	db %00000100
 	; end
 
-ScytherBaseData:: ; 0x52364
+ScytherBaseData2:: ; 0x52364
 	db SCYTHER ; 123
 
 	db  70, 110,  80, 105,  55,  80
@@ -8545,7 +8543,7 @@ ScytherBaseData:: ; 0x52364
 	db %00000000
 	; end
 
-JynxBaseData:: ; 0x52384
+JynxBaseData2:: ; 0x52384
 	db JYNX ; 124
 
 	db  65,  50,  35,  95, 115,  95
@@ -8576,7 +8574,7 @@ JynxBaseData:: ; 0x52384
 	db %00001000
 	; end
 
-ElectabuzzBaseData:: ; 0x523a4
+ElectabuzzBaseData2:: ; 0x523a4
 	db ELECTABUZZ ; 125
 
 	db  65,  83,  57, 105,  95,  85
@@ -8607,7 +8605,7 @@ ElectabuzzBaseData:: ; 0x523a4
 	db %00000100
 	; end
 
-MagmarBaseData:: ; 0x523c4
+MagmarBaseData2:: ; 0x523c4
 	db MAGMAR ; 126
 
 	db  65,  95,  57,  93, 100,  85
@@ -8638,7 +8636,7 @@ MagmarBaseData:: ; 0x523c4
 	db %00000010
 	; end
 
-PinsirBaseData:: ; 0x523e4
+PinsirBaseData2:: ; 0x523e4
 	db PINSIR ; 127
 
 	db  65, 125, 100,  85,  55,  70
@@ -8669,7 +8667,7 @@ PinsirBaseData:: ; 0x523e4
 	db %00000000
 	; end
 
-TaurosBaseData:: ; 0x52404
+TaurosBaseData2:: ; 0x52404
 	db TAUROS ; 128
 
 	db  75, 100,  95, 110,  40,  70
@@ -8700,7 +8698,7 @@ TaurosBaseData:: ; 0x52404
 	db %00001110
 	; end
 
-MagikarpBaseData:: ; 0x52424
+MagikarpBaseData2:: ; 0x52424
 	db MAGIKARP ; 129
 
 	db  20,  10,  55,  80,  15,  20
@@ -8731,7 +8729,7 @@ MagikarpBaseData:: ; 0x52424
 	db %00000000
 	; end
 
-GyaradosBaseData:: ; 0x52444
+GyaradosBaseData2:: ; 0x52444
 	db GYARADOS ; 130
 
 	db  95, 125,  79,  81,  60, 100
@@ -8762,7 +8760,7 @@ GyaradosBaseData:: ; 0x52444
 	db %00001111
 	; end
 
-LaprasBaseData:: ; 0x52464
+LaprasBaseData2:: ; 0x52464
 	db LAPRAS ; 131
 
 	db 130,  85,  80,  60,  85,  95
@@ -8793,7 +8791,7 @@ LaprasBaseData:: ; 0x52464
 	db %00001100
 	; end
 
-DittoBaseData:: ; 0x52484
+DittoBaseData2:: ; 0x52484
 	db DITTO ; 132
 
 	db  48,  48,  48,  48,  48,  48
@@ -8824,7 +8822,7 @@ DittoBaseData:: ; 0x52484
 	db %00000000
 	; end
 
-EeveeBaseData:: ; 0x524a4
+EeveeBaseData2:: ; 0x524a4
 	db EEVEE ; 133
 
 	db  55,  55,  50,  55,  45,  65
@@ -8855,7 +8853,7 @@ EeveeBaseData:: ; 0x524a4
 	db %00000000
 	; end
 
-VaporeonBaseData:: ; 0x524c4
+VaporeonBaseData2:: ; 0x524c4
 	db VAPOREON ; 134
 
 	db 130,  65,  60,  65, 110,  95
@@ -8886,7 +8884,7 @@ VaporeonBaseData:: ; 0x524c4
 	db %00001001
 	; end
 
-JolteonBaseData:: ; 0x524e4
+JolteonBaseData2:: ; 0x524e4
 	db JOLTEON ; 135
 
 	db  65,  65,  60, 130, 110,  95
@@ -8917,7 +8915,7 @@ JolteonBaseData:: ; 0x524e4
 	db %00000100
 	; end
 
-FlareonBaseData:: ; 0x52504
+FlareonBaseData2:: ; 0x52504
 	db FLAREON ; 136
 
 	db  65, 130,  60,  65,  95, 110
@@ -8948,7 +8946,7 @@ FlareonBaseData:: ; 0x52504
 	db %00000010
 	; end
 
-PorygonBaseData:: ; 0x52524
+PorygonBaseData2:: ; 0x52524
 	db PORYGON ; 137
 
 	db  65,  60,  70,  40,  85,  75
@@ -8979,7 +8977,7 @@ PorygonBaseData:: ; 0x52524
 	db %00001100
 	; end
 
-OmanyteBaseData:: ; 0x52544
+OmanyteBaseData2:: ; 0x52544
 	db OMANYTE ; 138
 
 	db  35,  40, 100,  35,  90,  55
@@ -9010,7 +9008,7 @@ OmanyteBaseData:: ; 0x52544
 	db %00001000
 	; end
 
-OmastarBaseData:: ; 0x52564
+OmastarBaseData2:: ; 0x52564
 	db OMASTAR ; 139
 
 	db  70,  60, 125,  55, 115,  70
@@ -9041,7 +9039,7 @@ OmastarBaseData:: ; 0x52564
 	db %00001000
 	; end
 
-KabutoBaseData:: ; 0x52584
+KabutoBaseData2:: ; 0x52584
 	db KABUTO ; 140
 
 	db  30,  80,  90,  55,  55,  45
@@ -9072,7 +9070,7 @@ KabutoBaseData:: ; 0x52584
 	db %00001000
 	; end
 
-KabutopsBaseData:: ; 0x525a4
+KabutopsBaseData2:: ; 0x525a4
 	db KABUTOPS ; 141
 
 	db  60, 115, 105,  80,  65,  70
@@ -9103,7 +9101,7 @@ KabutopsBaseData:: ; 0x525a4
 	db %00001000
 	; end
 
-AerodactylBaseData:: ; 0x525c4
+AerodactylBaseData2:: ; 0x525c4
 	db AERODACTYL ; 142
 
 	db  80, 105,  65, 130,  60,  75
@@ -9134,7 +9132,7 @@ AerodactylBaseData:: ; 0x525c4
 	db %00000010
 	; end
 
-SnorlaxBaseData:: ; 0x525e4
+SnorlaxBaseData2:: ; 0x525e4
 	db SNORLAX ; 143
 
 	db 160, 110,  65,  30,  65, 110
@@ -9165,7 +9163,7 @@ SnorlaxBaseData:: ; 0x525e4
 	db %00001110
 	; end
 
-ArticunoBaseData:: ; 0x52604
+ArticunoBaseData2:: ; 0x52604
 	db ARTICUNO ; 144
 
 	db  90,  85, 100,  85,  95, 125
@@ -9196,7 +9194,7 @@ ArticunoBaseData:: ; 0x52604
 	db %00001000
 	; end
 
-ZapdosBaseData:: ; 0x52624
+ZapdosBaseData2:: ; 0x52624
 	db ZAPDOS ; 145
 
 	db  90,  90,  85, 100, 125,  90
@@ -9227,7 +9225,7 @@ ZapdosBaseData:: ; 0x52624
 	db %00000100
 	; end
 
-MoltresBaseData:: ; 0x52644
+MoltresBaseData2:: ; 0x52644
 	db MOLTRES ; 146
 
 	db  90, 100,  90,  90, 125,  85
@@ -9258,7 +9256,7 @@ MoltresBaseData:: ; 0x52644
 	db %00000010
 	; end
 
-DratiniBaseData:: ; 0x52664
+DratiniBaseData2:: ; 0x52664
 	db DRATINI ; 147
 
 	db  41,  64,  45,  50,  50,  50
@@ -9289,7 +9287,7 @@ DratiniBaseData:: ; 0x52664
 	db %00001111
 	; end
 
-DragonairBaseData:: ; 0x52684
+DragonairBaseData2:: ; 0x52684
 	db DRAGONAIR ; 148
 
 	db  61,  84,  65,  70,  70,  70
@@ -9320,7 +9318,7 @@ DragonairBaseData:: ; 0x52684
 	db %00001111
 	; end
 
-DragoniteBaseData:: ; 0x526a4
+DragoniteBaseData2:: ; 0x526a4
 	db DRAGONITE ; 149
 
 	db  91, 134,  95,  80, 100, 100
@@ -9351,7 +9349,7 @@ DragoniteBaseData:: ; 0x526a4
 	db %00001111
 	; end
 
-MewtwoBaseData:: ; 0x526c4
+MewtwoBaseData2:: ; 0x526c4
 	db MEWTWO ; 150
 
 	db 106, 110,  90, 130, 154,  90
@@ -9382,7 +9380,7 @@ MewtwoBaseData:: ; 0x526c4
 	db %00001110
 	; end
 
-MewBaseData:: ; 0x526e4
+MewBaseData2:: ; 0x526e4
 	db MEW ; 151
 
 	db 100, 100, 100, 100, 100, 100
@@ -9413,7 +9411,7 @@ MewBaseData:: ; 0x526e4
 	db %00001111
 	; end
 
-ChikoritaBaseData:: ; 0x52704
+ChikoritaBaseData2:: ; 0x52704
 	db CHIKORITA ; 152
 
 	db  45,  49,  65,  45,  49,  65
@@ -9444,7 +9442,7 @@ ChikoritaBaseData:: ; 0x52704
 	db %00000000
 	; end
 
-BayleefBaseData:: ; 0x52724
+BayleefBaseData2:: ; 0x52724
 	db BAYLEEF ; 153
 
 	db  60,  62,  80,  60,  63,  80
@@ -9475,7 +9473,7 @@ BayleefBaseData:: ; 0x52724
 	db %00000000
 	; end
 
-MeganiumBaseData:: ; 0x52744
+MeganiumBaseData2:: ; 0x52744
 	db MEGANIUM ; 154
 
 	db  80,  82, 100,  80,  83, 100
@@ -9506,7 +9504,7 @@ MeganiumBaseData:: ; 0x52744
 	db %00000000
 	; end
 
-CyndaquilBaseData:: ; 0x52764
+CyndaquilBaseData2:: ; 0x52764
 	db CYNDAQUIL ; 155
 
 	db  39,  52,  43,  65,  60,  50
@@ -9537,7 +9535,7 @@ CyndaquilBaseData:: ; 0x52764
 	db %00000010
 	; end
 
-QuilavaBaseData:: ; 0x52784
+QuilavaBaseData2:: ; 0x52784
 	db QUILAVA ; 156
 
 	db  58,  64,  58,  80,  80,  65
@@ -9568,7 +9566,7 @@ QuilavaBaseData:: ; 0x52784
 	db %00000010
 	; end
 
-TyphlosionBaseData:: ; 0x527a4
+TyphlosionBaseData2:: ; 0x527a4
 	db TYPHLOSION ; 157
 
 	db  78,  84,  78, 100, 109,  85
@@ -9599,7 +9597,7 @@ TyphlosionBaseData:: ; 0x527a4
 	db %00000010
 	; end
 
-TotodileBaseData:: ; 0x527c4
+TotodileBaseData2:: ; 0x527c4
 	db TOTODILE ; 158
 
 	db  50,  65,  64,  43,  44,  48
@@ -9630,7 +9628,7 @@ TotodileBaseData:: ; 0x527c4
 	db %00001000
 	; end
 
-CroconawBaseData:: ; 0x527e4
+CroconawBaseData2:: ; 0x527e4
 	db CROCONAW ; 159
 
 	db  65,  80,  80,  58,  59,  63
@@ -9661,7 +9659,7 @@ CroconawBaseData:: ; 0x527e4
 	db %00001000
 	; end
 
-FeraligatrBaseData:: ; 0x52804
+FeraligatrBaseData2:: ; 0x52804
 	db FERALIGATR ; 160
 
 	db  85, 105, 100,  78,  79,  83
@@ -9692,7 +9690,7 @@ FeraligatrBaseData:: ; 0x52804
 	db %00001000
 	; end
 
-SentretBaseData:: ; 0x52824
+SentretBaseData2:: ; 0x52824
 	db SENTRET ; 161
 
 	db  35,  46,  34,  20,  35,  45
@@ -9723,7 +9721,7 @@ SentretBaseData:: ; 0x52824
 	db %00000000
 	; end
 
-FurretBaseData:: ; 0x52844
+FurretBaseData2:: ; 0x52844
 	db FURRET ; 162
 
 	db  85,  76,  64,  90,  45,  55
@@ -9754,7 +9752,7 @@ FurretBaseData:: ; 0x52844
 	db %00000000
 	; end
 
-HoothootBaseData:: ; 0x52864
+HoothootBaseData2:: ; 0x52864
 	db HOOTHOOT ; 163
 
 	db  60,  30,  30,  50,  36,  56
@@ -9785,7 +9783,7 @@ HoothootBaseData:: ; 0x52864
 	db %00000000
 	; end
 
-NoctowlBaseData:: ; 0x52884
+NoctowlBaseData2:: ; 0x52884
 	db NOCTOWL ; 164
 
 	db 100,  50,  50,  70,  76,  96
@@ -9816,7 +9814,7 @@ NoctowlBaseData:: ; 0x52884
 	db %00000000
 	; end
 
-LedybaBaseData:: ; 0x528a4
+LedybaBaseData2:: ; 0x528a4
 	db LEDYBA ; 165
 
 	db  40,  20,  30,  55,  40,  80
@@ -9847,7 +9845,7 @@ LedybaBaseData:: ; 0x528a4
 	db %00000000
 	; end
 
-LedianBaseData:: ; 0x528c4
+LedianBaseData2:: ; 0x528c4
 	db LEDIAN ; 166
 
 	db  55,  35,  50,  85,  55, 110
@@ -9878,7 +9876,7 @@ LedianBaseData:: ; 0x528c4
 	db %00000000
 	; end
 
-SpinarakBaseData:: ; 0x528e4
+SpinarakBaseData2:: ; 0x528e4
 	db SPINARAK ; 167
 
 	db  40,  60,  40,  30,  40,  40
@@ -9909,7 +9907,7 @@ SpinarakBaseData:: ; 0x528e4
 	db %00000000
 	; end
 
-AriadosBaseData:: ; 0x52904
+AriadosBaseData2:: ; 0x52904
 	db ARIADOS ; 168
 
 	db  70,  90,  70,  40,  60,  60
@@ -9940,7 +9938,7 @@ AriadosBaseData:: ; 0x52904
 	db %00000000
 	; end
 
-CrobatBaseData:: ; 0x52924
+CrobatBaseData2:: ; 0x52924
 	db CROBAT ; 169
 
 	db  85,  90,  80, 130,  70,  80
@@ -9971,7 +9969,7 @@ CrobatBaseData:: ; 0x52924
 	db %00000000
 	; end
 
-ChinchouBaseData:: ; 0x52944
+ChinchouBaseData2:: ; 0x52944
 	db CHINCHOU ; 170
 
 	db  75,  38,  38,  67,  56,  56
@@ -10002,7 +10000,7 @@ ChinchouBaseData:: ; 0x52944
 	db %00001101
 	; end
 
-LanturnBaseData:: ; 0x52964
+LanturnBaseData2:: ; 0x52964
 	db LANTURN ; 171
 
 	db 125,  58,  58,  67,  76,  76
@@ -10033,7 +10031,7 @@ LanturnBaseData:: ; 0x52964
 	db %00001101
 	; end
 
-PichuBaseData:: ; 0x52984
+PichuBaseData2:: ; 0x52984
 	db PICHU ; 172
 
 	db  20,  40,  15,  60,  35,  35
@@ -10064,7 +10062,7 @@ PichuBaseData:: ; 0x52984
 	db %00000100
 	; end
 
-CleffaBaseData:: ; 0x529a4
+CleffaBaseData2:: ; 0x529a4
 	db CLEFFA ; 173
 
 	db  50,  25,  28,  15,  45,  55
@@ -10095,7 +10093,7 @@ CleffaBaseData:: ; 0x529a4
 	db %00000010
 	; end
 
-IgglybuffBaseData:: ; 0x529c4
+IgglybuffBaseData2:: ; 0x529c4
 	db IGGLYBUFF ; 174
 
 	db  90,  30,  15,  15,  40,  20
@@ -10126,7 +10124,7 @@ IgglybuffBaseData:: ; 0x529c4
 	db %00000010
 	; end
 
-TogepiBaseData:: ; 0x529e4
+TogepiBaseData2:: ; 0x529e4
 	db TOGEPI ; 175
 
 	db  35,  20,  65,  20,  40,  65
@@ -10157,7 +10155,7 @@ TogepiBaseData:: ; 0x529e4
 	db %00000010
 	; end
 
-TogeticBaseData:: ; 0x52a04
+TogeticBaseData2:: ; 0x52a04
 	db TOGETIC ; 176
 
 	db  55,  40,  85,  40,  80, 105
@@ -10188,7 +10186,7 @@ TogeticBaseData:: ; 0x52a04
 	db %00000010
 	; end
 
-NatuBaseData:: ; 0x52a24
+NatuBaseData2:: ; 0x52a24
 	db NATU ; 177
 
 	db  40,  50,  45,  70,  70,  45
@@ -10219,7 +10217,7 @@ NatuBaseData:: ; 0x52a24
 	db %00000000
 	; end
 
-XatuBaseData:: ; 0x52a44
+XatuBaseData2:: ; 0x52a44
 	db XATU ; 178
 
 	db  65,  75,  70,  95,  95,  70
@@ -10250,7 +10248,7 @@ XatuBaseData:: ; 0x52a44
 	db %00000000
 	; end
 
-MareepBaseData:: ; 0x52a64
+MareepBaseData2:: ; 0x52a64
 	db MAREEP ; 179
 
 	db  55,  40,  40,  35,  65,  45
@@ -10281,7 +10279,7 @@ MareepBaseData:: ; 0x52a64
 	db %00000100
 	; end
 
-FlaaffyBaseData:: ; 0x52a84
+FlaaffyBaseData2:: ; 0x52a84
 	db FLAAFFY ; 180
 
 	db  70,  55,  55,  45,  80,  60
@@ -10312,7 +10310,7 @@ FlaaffyBaseData:: ; 0x52a84
 	db %00000100
 	; end
 
-AmpharosBaseData:: ; 0x52aa4
+AmpharosBaseData2:: ; 0x52aa4
 	db AMPHAROS ; 181
 
 	db  90,  75,  75,  55, 115,  90
@@ -10343,7 +10341,7 @@ AmpharosBaseData:: ; 0x52aa4
 	db %00000100
 	; end
 
-BellossomBaseData:: ; 0x52ac4
+BellossomBaseData2:: ; 0x52ac4
 	db BELLOSSOM ; 182
 
 	db  75,  80,  85,  50,  90, 100
@@ -10374,7 +10372,7 @@ BellossomBaseData:: ; 0x52ac4
 	db %00000000
 	; end
 
-MarillBaseData:: ; 0x52ae4
+MarillBaseData2:: ; 0x52ae4
 	db MARILL ; 183
 
 	db  70,  20,  50,  40,  20,  50
@@ -10405,7 +10403,7 @@ MarillBaseData:: ; 0x52ae4
 	db %00001001
 	; end
 
-AzumarillBaseData:: ; 0x52b04
+AzumarillBaseData2:: ; 0x52b04
 	db AZUMARILL ; 184
 
 	db 100,  50,  80,  50,  50,  80
@@ -10436,7 +10434,7 @@ AzumarillBaseData:: ; 0x52b04
 	db %00001001
 	; end
 
-SudowoodoBaseData:: ; 0x52b24
+SudowoodoBaseData2:: ; 0x52b24
 	db SUDOWOODO ; 185
 
 	db  70, 100, 115,  30,  30,  65
@@ -10467,7 +10465,7 @@ SudowoodoBaseData:: ; 0x52b24
 	db %00000000
 	; end
 
-PolitoedBaseData:: ; 0x52b44
+PolitoedBaseData2:: ; 0x52b44
 	db POLITOED ; 186
 
 	db  90,  75,  75,  70,  90, 100
@@ -10498,7 +10496,7 @@ PolitoedBaseData:: ; 0x52b44
 	db %00001001
 	; end
 
-HoppipBaseData:: ; 0x52b64
+HoppipBaseData2:: ; 0x52b64
 	db HOPPIP ; 187
 
 	db  35,  35,  40,  50,  35,  55
@@ -10529,7 +10527,7 @@ HoppipBaseData:: ; 0x52b64
 	db %00000000
 	; end
 
-SkiploomBaseData:: ; 0x52b84
+SkiploomBaseData2:: ; 0x52b84
 	db SKIPLOOM ; 188
 
 	db  55,  45,  50,  80,  45,  65
@@ -10560,7 +10558,7 @@ SkiploomBaseData:: ; 0x52b84
 	db %00000000
 	; end
 
-JumpluffBaseData:: ; 0x52ba4
+JumpluffBaseData2:: ; 0x52ba4
 	db JUMPLUFF ; 189
 
 	db  75,  55,  70, 110,  55,  85
@@ -10591,7 +10589,7 @@ JumpluffBaseData:: ; 0x52ba4
 	db %00000000
 	; end
 
-AipomBaseData:: ; 0x52bc4
+AipomBaseData2:: ; 0x52bc4
 	db AIPOM ; 190
 
 	db  55,  70,  55,  85,  40,  55
@@ -10622,7 +10620,7 @@ AipomBaseData:: ; 0x52bc4
 	db %00000100
 	; end
 
-SunkernBaseData:: ; 0x52be4
+SunkernBaseData2:: ; 0x52be4
 	db SUNKERN ; 191
 
 	db  30,  30,  30,  30,  30,  30
@@ -10653,7 +10651,7 @@ SunkernBaseData:: ; 0x52be4
 	db %00000000
 	; end
 
-SunfloraBaseData:: ; 0x52c04
+SunfloraBaseData2:: ; 0x52c04
 	db SUNFLORA ; 192
 
 	db  75,  75,  55,  30, 105,  85
@@ -10684,7 +10682,7 @@ SunfloraBaseData:: ; 0x52c04
 	db %00000000
 	; end
 
-YanmaBaseData:: ; 0x52c24
+YanmaBaseData2:: ; 0x52c24
 	db YANMA ; 193
 
 	db  65,  65,  45,  95,  75,  45
@@ -10715,7 +10713,7 @@ YanmaBaseData:: ; 0x52c24
 	db %00000000
 	; end
 
-WooperBaseData:: ; 0x52c44
+WooperBaseData2:: ; 0x52c44
 	db WOOPER ; 194
 
 	db  55,  45,  45,  15,  25,  25
@@ -10746,7 +10744,7 @@ WooperBaseData:: ; 0x52c44
 	db %00001000
 	; end
 
-QuagsireBaseData:: ; 0x52c64
+QuagsireBaseData2:: ; 0x52c64
 	db QUAGSIRE ; 195
 
 	db  95,  85,  85,  35,  65,  65
@@ -10777,7 +10775,7 @@ QuagsireBaseData:: ; 0x52c64
 	db %00001000
 	; end
 
-EspeonBaseData:: ; 0x52c84
+EspeonBaseData2:: ; 0x52c84
 	db ESPEON ; 196
 
 	db  65,  65,  60, 110, 130,  95
@@ -10808,7 +10806,7 @@ EspeonBaseData:: ; 0x52c84
 	db %00000000
 	; end
 
-UmbreonBaseData:: ; 0x52ca4
+UmbreonBaseData2:: ; 0x52ca4
 	db UMBREON ; 197
 
 	db  95,  65, 110,  65,  60, 130
@@ -10839,7 +10837,7 @@ UmbreonBaseData:: ; 0x52ca4
 	db %00000000
 	; end
 
-MurkrowBaseData:: ; 0x52cc4
+MurkrowBaseData2:: ; 0x52cc4
 	db MURKROW ; 198
 
 	db  60,  85,  42,  91,  85,  42
@@ -10870,7 +10868,7 @@ MurkrowBaseData:: ; 0x52cc4
 	db %00000000
 	; end
 
-SlowkingBaseData:: ; 0x52ce4
+SlowkingBaseData2:: ; 0x52ce4
 	db SLOWKING ; 199
 
 	db  95,  75,  80,  30, 100, 110
@@ -10901,7 +10899,7 @@ SlowkingBaseData:: ; 0x52ce4
 	db %00001010
 	; end
 
-MisdreavusBaseData:: ; 0x52d04
+MisdreavusBaseData2:: ; 0x52d04
 	db MISDREAVUS ; 200
 
 	db  60,  60,  60,  85,  85,  85
@@ -10932,7 +10930,7 @@ MisdreavusBaseData:: ; 0x52d04
 	db %00000100
 	; end
 
-UnownBaseData:: ; 0x52d24
+UnownBaseData2:: ; 0x52d24
 	db UNOWN ; 201
 
 	db  48,  72,  48,  48,  72,  48
@@ -10963,7 +10961,7 @@ UnownBaseData:: ; 0x52d24
 	db %00000000
 	; end
 
-WobbuffetBaseData:: ; 0x52d44
+WobbuffetBaseData2:: ; 0x52d44
 	db WOBBUFFET ; 202
 
 	db 190,  33,  58,  33,  33,  58
@@ -10994,7 +10992,7 @@ WobbuffetBaseData:: ; 0x52d44
 	db %00000000
 	; end
 
-GirafarigBaseData:: ; 0x52d64
+GirafarigBaseData2:: ; 0x52d64
 	db GIRAFARIG ; 203
 
 	db  70,  80,  65,  85,  90,  65
@@ -11025,7 +11023,7 @@ GirafarigBaseData:: ; 0x52d64
 	db %00000100
 	; end
 
-PinecoBaseData:: ; 0x52d84
+PinecoBaseData2:: ; 0x52d84
 	db PINECO ; 204
 
 	db  50,  65,  90,  15,  35,  35
@@ -11056,7 +11054,7 @@ PinecoBaseData:: ; 0x52d84
 	db %00000000
 	; end
 
-ForretressBaseData:: ; 0x52da4
+ForretressBaseData2:: ; 0x52da4
 	db FORRETRESS ; 205
 
 	db  75,  90, 140,  40,  60,  60
@@ -11087,7 +11085,7 @@ ForretressBaseData:: ; 0x52da4
 	db %00000000
 	; end
 
-DunsparceBaseData:: ; 0x52dc4
+DunsparceBaseData2:: ; 0x52dc4
 	db DUNSPARCE ; 206
 
 	db 100,  70,  70,  45,  65,  65
@@ -11118,7 +11116,7 @@ DunsparceBaseData:: ; 0x52dc4
 	db %00000110
 	; end
 
-GligarBaseData:: ; 0x52de4
+GligarBaseData2:: ; 0x52de4
 	db GLIGAR ; 207
 
 	db  65,  75, 105,  85,  35,  65
@@ -11149,7 +11147,7 @@ GligarBaseData:: ; 0x52de4
 	db %00000000
 	; end
 
-SteelixBaseData:: ; 0x52e04
+SteelixBaseData2:: ; 0x52e04
 	db STEELIX ; 208
 
 	db  75,  85, 200,  30,  55,  65
@@ -11180,7 +11178,7 @@ SteelixBaseData:: ; 0x52e04
 	db %00000000
 	; end
 
-SnubbullBaseData:: ; 0x52e24
+SnubbullBaseData2:: ; 0x52e24
 	db SNUBBULL ; 209
 
 	db  60,  80,  50,  30,  40,  40
@@ -11211,7 +11209,7 @@ SnubbullBaseData:: ; 0x52e24
 	db %00000100
 	; end
 
-GranbullBaseData:: ; 0x52e44
+GranbullBaseData2:: ; 0x52e44
 	db GRANBULL ; 210
 
 	db  90, 120,  75,  45,  60,  60
@@ -11242,7 +11240,7 @@ GranbullBaseData:: ; 0x52e44
 	db %00000100
 	; end
 
-QwilfishBaseData:: ; 0x52e64
+QwilfishBaseData2:: ; 0x52e64
 	db QWILFISH ; 211
 
 	db  65,  95,  75,  85,  55,  55
@@ -11273,7 +11271,7 @@ QwilfishBaseData:: ; 0x52e64
 	db %00001001
 	; end
 
-ScizorBaseData:: ; 0x52e84
+ScizorBaseData2:: ; 0x52e84
 	db SCIZOR ; 212
 
 	db  70, 130, 100,  65,  55,  80
@@ -11304,7 +11302,7 @@ ScizorBaseData:: ; 0x52e84
 	db %00000000
 	; end
 
-ShuckleBaseData:: ; 0x52ea4
+ShuckleBaseData2:: ; 0x52ea4
 	db SHUCKLE ; 213
 
 	db  20,  10, 230,  05,  10, 230
@@ -11335,7 +11333,7 @@ ShuckleBaseData:: ; 0x52ea4
 	db %00000000
 	; end
 
-HeracrossBaseData:: ; 0x52ec4
+HeracrossBaseData2:: ; 0x52ec4
 	db HERACROSS ; 214
 
 	db  80, 125,  75,  85,  40,  95
@@ -11366,7 +11364,7 @@ HeracrossBaseData:: ; 0x52ec4
 	db %00000000
 	; end
 
-SneaselBaseData:: ; 0x52ee4
+SneaselBaseData2:: ; 0x52ee4
 	db SNEASEL ; 215
 
 	db  55,  95,  55, 115,  35,  75
@@ -11397,7 +11395,7 @@ SneaselBaseData:: ; 0x52ee4
 	db %00001000
 	; end
 
-TeddiursaBaseData:: ; 0x52f04
+TeddiursaBaseData2:: ; 0x52f04
 	db TEDDIURSA ; 216
 
 	db  60,  80,  50,  40,  50,  50
@@ -11428,7 +11426,7 @@ TeddiursaBaseData:: ; 0x52f04
 	db %00000000
 	; end
 
-UrsaringBaseData:: ; 0x52f24
+UrsaringBaseData2:: ; 0x52f24
 	db URSARING ; 217
 
 	db  90, 130,  75,  55,  75,  75
@@ -11459,7 +11457,7 @@ UrsaringBaseData:: ; 0x52f24
 	db %00000000
 	; end
 
-SlugmaBaseData:: ; 0x52f44
+SlugmaBaseData2:: ; 0x52f44
 	db SLUGMA ; 218
 
 	db  40,  40,  40,  20,  70,  40
@@ -11490,7 +11488,7 @@ SlugmaBaseData:: ; 0x52f44
 	db %00000010
 	; end
 
-MagcargoBaseData:: ; 0x52f64
+MagcargoBaseData2:: ; 0x52f64
 	db MAGCARGO ; 219
 
 	db  50,  50, 120,  30,  80,  80
@@ -11521,7 +11519,7 @@ MagcargoBaseData:: ; 0x52f64
 	db %00000010
 	; end
 
-SwinubBaseData:: ; 0x52f84
+SwinubBaseData2:: ; 0x52f84
 	db SWINUB ; 220
 
 	db  50,  50,  40,  50,  30,  30
@@ -11552,7 +11550,7 @@ SwinubBaseData:: ; 0x52f84
 	db %00001000
 	; end
 
-PiloswineBaseData:: ; 0x52fa4
+PiloswineBaseData2:: ; 0x52fa4
 	db PILOSWINE ; 221
 
 	db 100, 100,  80,  50,  60,  60
@@ -11583,7 +11581,7 @@ PiloswineBaseData:: ; 0x52fa4
 	db %00001000
 	; end
 
-CorsolaBaseData:: ; 0x52fc4
+CorsolaBaseData2:: ; 0x52fc4
 	db CORSOLA ; 222
 
 	db  55,  55,  85,  35,  65,  85
@@ -11614,7 +11612,7 @@ CorsolaBaseData:: ; 0x52fc4
 	db %00001000
 	; end
 
-RemoraidBaseData:: ; 0x52fe4
+RemoraidBaseData2:: ; 0x52fe4
 	db REMORAID ; 223
 
 	db  35,  65,  35,  65,  65,  35
@@ -11645,7 +11643,7 @@ RemoraidBaseData:: ; 0x52fe4
 	db %00001010
 	; end
 
-OctilleryBaseData:: ; 0x53004
+OctilleryBaseData2:: ; 0x53004
 	db OCTILLERY ; 224
 
 	db  75, 105,  75,  45, 105,  75
@@ -11676,7 +11674,7 @@ OctilleryBaseData:: ; 0x53004
 	db %00001010
 	; end
 
-DelibirdBaseData:: ; 0x53024
+DelibirdBaseData2:: ; 0x53024
 	db DELIBIRD ; 225
 
 	db  45,  55,  45,  75,  65,  45
@@ -11707,7 +11705,7 @@ DelibirdBaseData:: ; 0x53024
 	db %00001000
 	; end
 
-MantineBaseData:: ; 0x53044
+MantineBaseData2:: ; 0x53044
 	db MANTINE ; 226
 
 	db  65,  40,  70,  70,  80, 140
@@ -11738,7 +11736,7 @@ MantineBaseData:: ; 0x53044
 	db %00001001
 	; end
 
-SkarmoryBaseData:: ; 0x53064
+SkarmoryBaseData2:: ; 0x53064
 	db SKARMORY ; 227
 
 	db  65,  80, 140,  70,  40,  70
@@ -11769,7 +11767,7 @@ SkarmoryBaseData:: ; 0x53064
 	db %00000000
 	; end
 
-HoundourBaseData:: ; 0x53084
+HoundourBaseData2:: ; 0x53084
 	db HOUNDOUR ; 228
 
 	db  45,  60,  30,  65,  80,  50
@@ -11800,7 +11798,7 @@ HoundourBaseData:: ; 0x53084
 	db %00000010
 	; end
 
-HoundoomBaseData:: ; 0x530a4
+HoundoomBaseData2:: ; 0x530a4
 	db HOUNDOOM ; 229
 
 	db  75,  90,  50,  95, 110,  80
@@ -11831,7 +11829,7 @@ HoundoomBaseData:: ; 0x530a4
 	db %00000010
 	; end
 
-KingdraBaseData:: ; 0x530c4
+KingdraBaseData2:: ; 0x530c4
 	db KINGDRA ; 230
 
 	db  75,  95,  95,  85,  95,  95
@@ -11862,7 +11860,7 @@ KingdraBaseData:: ; 0x530c4
 	db %00001001
 	; end
 
-PhanpyBaseData:: ; 0x530e4
+PhanpyBaseData2:: ; 0x530e4
 	db PHANPY ; 231
 
 	db  90,  60,  60,  40,  40,  40
@@ -11893,7 +11891,7 @@ PhanpyBaseData:: ; 0x530e4
 	db %00000000
 	; end
 
-DonphanBaseData:: ; 0x53104
+DonphanBaseData2:: ; 0x53104
 	db DONPHAN ; 232
 
 	db  90, 120, 120,  50,  60,  60
@@ -11924,7 +11922,7 @@ DonphanBaseData:: ; 0x53104
 	db %00000000
 	; end
 
-Porygon2BaseData:: ; 0x53124
+Porygon2BaseData2:: ; 0x53124
 	db PORYGON2 ; 233
 
 	db  85,  80,  90,  60, 105,  95
@@ -11955,7 +11953,7 @@ Porygon2BaseData:: ; 0x53124
 	db %00001100
 	; end
 
-StantlerBaseData:: ; 0x53144
+StantlerBaseData2:: ; 0x53144
 	db STANTLER ; 234
 
 	db  73,  95,  62,  85,  85,  65
@@ -11986,7 +11984,7 @@ StantlerBaseData:: ; 0x53144
 	db %00000000
 	; end
 
-SmeargleBaseData:: ; 0x53164
+SmeargleBaseData2:: ; 0x53164
 	db SMEARGLE ; 235
 
 	db  55,  20,  35,  75,  20,  45
@@ -12017,7 +12015,7 @@ SmeargleBaseData:: ; 0x53164
 	db %00000000
 	; end
 
-TyrogueBaseData:: ; 0x53184
+TyrogueBaseData2:: ; 0x53184
 	db TYROGUE ; 236
 
 	db  35,  35,  35,  35,  35,  35
@@ -12048,7 +12046,7 @@ TyrogueBaseData:: ; 0x53184
 	db %00000000
 	; end
 
-HitmontopBaseData:: ; 0x531a4
+HitmontopBaseData2:: ; 0x531a4
 	db HITMONTOP ; 237
 
 	db  50,  95,  95,  70,  35, 110
@@ -12079,7 +12077,7 @@ HitmontopBaseData:: ; 0x531a4
 	db %00000000
 	; end
 
-SmoochumBaseData:: ; 0x531c4
+SmoochumBaseData2:: ; 0x531c4
 	db SMOOCHUM ; 238
 
 	db  45,  30,  15,  65,  85,  65
@@ -12110,7 +12108,7 @@ SmoochumBaseData:: ; 0x531c4
 	db %00001000
 	; end
 
-ElekidBaseData:: ; 0x531e4
+ElekidBaseData2:: ; 0x531e4
 	db ELEKID ; 239
 
 	db  45,  63,  37,  95,  65,  55
@@ -12141,7 +12139,7 @@ ElekidBaseData:: ; 0x531e4
 	db %00000100
 	; end
 
-MagbyBaseData:: ; 0x53204
+MagbyBaseData2:: ; 0x53204
 	db MAGBY ; 240
 
 	db  45,  75,  37,  83,  70,  55
@@ -12172,7 +12170,7 @@ MagbyBaseData:: ; 0x53204
 	db %00000010
 	; end
 
-MiltankBaseData:: ; 0x53224
+MiltankBaseData2:: ; 0x53224
 	db MILTANK ; 241
 
 	db  95,  80, 105, 100,  40,  70
@@ -12203,7 +12201,7 @@ MiltankBaseData:: ; 0x53224
 	db %00001100
 	; end
 
-BlisseyBaseData:: ; 0x53244
+BlisseyBaseData2:: ; 0x53244
 	db BLISSEY ; 242
 
 	db 255,  10,  10,  55,  75, 135
@@ -12234,7 +12232,7 @@ BlisseyBaseData:: ; 0x53244
 	db %00001110
 	; end
 
-RaikouBaseData:: ; 0x53264
+RaikouBaseData2:: ; 0x53264
 	db RAIKOU ; 243
 
 	db  90,  85,  75, 115, 115, 100
@@ -12265,7 +12263,7 @@ RaikouBaseData:: ; 0x53264
 	db %00000100
 	; end
 
-EnteiBaseData:: ; 0x53284
+EnteiBaseData2:: ; 0x53284
 	db ENTEI ; 244
 
 	db 115, 115,  85, 100,  90,  75
@@ -12296,7 +12294,7 @@ EnteiBaseData:: ; 0x53284
 	db %00000010
 	; end
 
-SuicuneBaseData:: ; 0x532a4
+SuicuneBaseData2:: ; 0x532a4
 	db SUICUNE ; 245
 
 	db 100,  75, 115,  85,  90, 115
@@ -12327,7 +12325,7 @@ SuicuneBaseData:: ; 0x532a4
 	db %00001001
 	; end
 
-LarvitarBaseData:: ; 0x532c4
+LarvitarBaseData2:: ; 0x532c4
 	db LARVITAR ; 246
 
 	db  50,  64,  50,  41,  45,  50
@@ -12358,7 +12356,7 @@ LarvitarBaseData:: ; 0x532c4
 	db %00000000
 	; end
 
-PupitarBaseData:: ; 0x532e4
+PupitarBaseData2:: ; 0x532e4
 	db PUPITAR ; 247
 
 	db  70,  84,  70,  51,  65,  70
@@ -12389,7 +12387,7 @@ PupitarBaseData:: ; 0x532e4
 	db %00000000
 	; end
 
-TyranitarBaseData:: ; 0x53304
+TyranitarBaseData2:: ; 0x53304
 	db TYRANITAR ; 248
 
 	db 100, 134, 110,  61,  95, 100
@@ -12420,7 +12418,7 @@ TyranitarBaseData:: ; 0x53304
 	db %00001110
 	; end
 
-LugiaBaseData:: ; 0x53324
+LugiaBaseData2:: ; 0x53324
 	db LUGIA ; 249
 
 	db 106,  90, 130, 110,  90, 154
@@ -12451,7 +12449,7 @@ LugiaBaseData:: ; 0x53324
 	db %00001101
 	; end
 
-Ho_OhBaseData:: ; 0x53344
+Ho_OhBaseData2:: ; 0x53344
 	db HO_OH ; 250
 
 	db 106, 130,  90,  90, 110, 154
@@ -12482,7 +12480,7 @@ Ho_OhBaseData:: ; 0x53344
 	db %00000110
 	; end
 
-CelebiBaseData:: ; 0x53364
+CelebiBaseData2:: ; 0x53364
 	db CELEBI ; 251
 
 	db 100, 100, 100, 100, 100, 100
