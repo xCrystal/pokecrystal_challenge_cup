@@ -1,4 +1,9 @@
 GenerateTeam:
+	push af
+	push bc
+	push de
+	push hl
+
 	call ResetRNs
 
 	ld hl, PartyMons
@@ -75,6 +80,10 @@ GenerateTeam:
 	add hl, bc
 	call ResetNicknames	
 	
+	pop hl
+	pop de
+	pop bc
+	pop af
 	ret
 	
 
@@ -125,12 +134,47 @@ GenSpecies:
 	jr nc, .repeat ; >= #252
 	and a 
 	jr z, .repeat ; = #000
+	
+	ld b, a
+	ld a, [$cff7] ; check whether NFE-less option was selected
+	and a 
+	scf ; if it wasn't, set carry regardless of NFE or not
+	call nz, IsNFE ; return non carry if mon is NFE, carry otherwise
+	jr nc, .repeat 
+	ld a, b
+	
 	ld [hl], a 
 	ld [de], a	
-	jr nz, .next
+	jr .next
 	
 .done	
 	ret 
+	
+	
+IsNFE:
+	push hl
+	push de
+	push bc
+	ld a, b
+	ld hl, EvosAttacksPointers2
+	dec a
+	ld d, 0
+	ld e, a
+	add hl, de
+	add hl, de ; move to pointer
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a ; load pointed address into hl
+	ld a, [hl] 
+	and a ; if the first byte is 00, the Pokemon does not evolve
+	scf
+	jr z, .NotNFE
+	ccf
+.NotNFE	
+	pop bc
+	pop de
+	pop hl
+	ret
 	
 	
 GenMoves:
@@ -200,7 +244,6 @@ GenMoves:
 	cp $ff ; more egg moves?
 	jr nz, .copyEggMove
 	
-; WIP
 	ld a, [$cff8]
 	and a
 	jp z, .getMoves ; selected option was not to include TMs/HMs
@@ -238,7 +281,6 @@ GenMoves:
 	dec e
 	jr nz, .nextArray
 	
-; /WIP
 
 .getMoves
 	pop af ; restore number of Pokémon
@@ -594,7 +636,6 @@ TMHMList:
 	db 0, 0, 0, 0
 
 
-
 GenID:
 	ld hl, PartyMon1ID
 	ld de, PartyMon2 - PartyMon1	
@@ -763,4 +804,3 @@ Random2:
 	
 	
 INCLUDE "generate_team_data.asm"
-	

@@ -125,22 +125,46 @@ Joypad:: ; 935
 	ld a, b
 	and SELECT | START | D_RIGHT
 	cp  SELECT | START | D_RIGHT
-	jr z, .doNonTMHM
+	jr z, .doTMHM
 		
+	ld a, b
+	and SELECT | START | D_DOWN
+	cp  SELECT | START | D_DOWN
+	jr z, .doNonTMHM
+	
 	ld a, b
 	and SELECT | START | D_LEFT
 	cp  SELECT | START | D_LEFT
-	jr nz, .done3
+	jr z, .doNonTMHMnonNFE
 
+	ld a, b
+	and SELECT | START | D_UP
+	cp  SELECT | START | D_UP
+	jr nz, .done3
+  ; jr z, .doTMHMnonNFE
+	
+.doTMHMnonNFE
+	ld a, [$cff7]
+	inc a
+	ld [$cff7], a
+	
 .doTMHM	
 	ld a, [$cff8] 
 	inc a
 	ld [$cff8], a
+	jr .doNonTMHM
+
+.doNonTMHMnonNFE
+	ld a, [$cff7]
+	inc a
+	ld [$cff7], a
 	
 .doNonTMHM	
 	ld a, [IsInBattle]
 	and a 
 	jr nz, .done3 ; only outside battle
+	ld a, $80
+	ld [$cff0], a	
 	ld a, [hROMBank]
 	push af 
 	ld a, $79 
@@ -148,8 +172,6 @@ Joypad:: ; 935
 	call $4000 ; GenerateTeam
 	pop af 
 	rst Bankswitch
-	ld a, $80
-	ld [$cff0], a
 .done3	
 	ret
 ; 984
