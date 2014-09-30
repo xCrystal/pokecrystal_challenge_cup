@@ -121,10 +121,22 @@ Joypad:: ; 935
 	ld a, [$cff0]
 	and a
 	jr nz, .done3 ; only once
+	
 	ld a, b
 	and SELECT | START | D_RIGHT
 	cp  SELECT | START | D_RIGHT
+	jr z, .doNonTMHM
+	
+	ld a, b
+	and SELECT | START | D_LEFT
+	cp  SELECT | START | D_LEFT
 	jr nz, .done3
+      ; jr .doTMHM
+.doTMHM	
+	ld a, [$cff8] 
+	inc a
+	
+.doNonTMHM	
 	ld a, [IsInBattle]
 	and a 
 	jr nz, .done3 ; only outside battle
