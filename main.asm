@@ -4411,57 +4411,57 @@ OakSpeech: ; 0x5f99
 	call Function4a3
 	call Function4b6
 	xor a
-	ld [CurPartySpecies], a
-	ld a, POKEMON_PROF
-	ld [TrainerClass], a
-	call Function619c
+	; ld [CurPartySpecies], a
+	; ld a, POKEMON_PROF
+	; ld [TrainerClass], a
+	; call Function619c
 
-	ld b, $1c
-	call GetSGBLayout
-	call Function616a
+	; ld b, $1c
+	; call GetSGBLayout
+	; call Function616a
 
-	ld hl, OakText1
-	call PrintText
-	call Function4b6
-	call ClearTileMap
+	; ld hl, OakText1
+	; call PrintText
+	; call Function4b6
+	; call ClearTileMap
 
-	ld a, WOOPER
-	ld [CurSpecies], a
-	ld [CurPartySpecies], a
-	call GetBaseData
+	; ld a, WOOPER
+	; ld [CurSpecies], a
+	; ld [CurPartySpecies], a
+	; call GetBaseData
 
-	hlcoord 6, 4
-	call Function3786
+	; hlcoord 6, 4
+	; call Function3786
 
-	xor a
-	ld [TempMonDVs], a
-	ld [$d124], a
+	; xor a
+	; ld [TempMonDVs], a
+	; ld [$d124], a
 
-	ld b, $1c
-	call GetSGBLayout
-	call Function6182
+	; ld b, $1c
+	; call GetSGBLayout
+	; call Function6182
 
-	ld hl, OakText2
-	call PrintText
-	ld hl, OakText4
-	call PrintText
-	call Function4b6
-	call ClearTileMap
+	; ld hl, OakText2
+	; call PrintText
+	; ld hl, OakText4
+	; call PrintText
+	; call Function4b6
+	; call ClearTileMap
 
-	xor a
-	ld [CurPartySpecies], a
-	ld a, POKEMON_PROF
-	ld [TrainerClass], a
-	call Function619c
+	; xor a
+	; ld [CurPartySpecies], a
+	; ld a, POKEMON_PROF
+	; ld [TrainerClass], a
+	; call Function619c
 
-	ld b, $1c
-	call GetSGBLayout
-	call Function616a
+	; ld b, $1c
+	; call GetSGBLayout
+	; call Function616a
 
-	ld hl, OakText5
-	call PrintText
-	call Function4b6
-	call ClearTileMap
+	; ld hl, OakText5
+	; call PrintText
+	; call Function4b6
+	; call ClearTileMap
 
 	xor a
 	ld [CurPartySpecies], a
@@ -4474,8 +4474,8 @@ OakSpeech: ; 0x5f99
 	ld hl, OakText6
 	call PrintText
 	call NamePlayer
-	ld hl, OakText7
-	call PrintText
+	; ld hl, OakText7
+	; call PrintText
 	ret
 
 OakText1: ; 0x6045
