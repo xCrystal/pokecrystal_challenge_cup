@@ -118,7 +118,6 @@ ResetRNs: ; initialize the ten seeds to (pseudo) random numbers
 GenSpecies:
 	ld de, PartySpecies
 	ld hl, PartyMon1Species
-	ld bc, PartyMon2 - PartyMon1
 	jr .repeat 
 	
 .next
@@ -126,6 +125,7 @@ GenSpecies:
 	ld a, e
 	cp $de ; did we reach seventh Pokémon?
 	jr z, .done
+	ld bc, PartyMon2 - PartyMon1
 	add hl, bc
 	
 .repeat:
@@ -134,7 +134,7 @@ GenSpecies:
 	jr nc, .repeat ; >= #252
 	and a 
 	jr z, .repeat ; = #000
-	
+	 
 	ld b, a
 	ld a, [$cff7] ; check whether NFE-less option was selected
 	and a 
