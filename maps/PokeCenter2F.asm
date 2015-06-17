@@ -190,8 +190,8 @@ UnknownScript_0x19294a: ; 0x19294a
 ; 0x192952
 
 LinkReceptionistScript_0x192952: ; 0x192952
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iffalse UnknownScript_0x192895
+	; checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	; iffalse UnknownScript_0x192895
 	loadfont
 	2writetext UnknownText_0x192de0
 	yesorno

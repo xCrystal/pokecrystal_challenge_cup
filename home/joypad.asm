@@ -202,8 +202,12 @@ GetJoypad:: ; 984
 ; See more below.
 	ld a, [InputType]
 	cp a, AUTO_INPUT
-	jr z, .auto
+	jr nz, .notAuto
+	ld a, [IsInBattle]
+	and a
+	jr nz, .auto
 
+.notAuto	
 ; To get deltas, take this and last frame's input.
 	ld a, [hJoypadDown] ; real input
 	ld b, a

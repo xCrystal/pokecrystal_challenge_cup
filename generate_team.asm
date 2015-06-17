@@ -29,7 +29,27 @@ GenerateTeam:
 	ld [hl], a
 	add hl, bc
 	dec e
-	jr nz, .clearNextPokerus	
+	jr nz, .clearNextPokerus
+	
+	ld hl, PartyMon1Status
+	ld bc, PartyMon2 - PartyMon1
+	ld e, 6
+.clearNextStatus
+	xor a
+	ld [hl], a
+	add hl, bc
+	dec e
+	jr nz, .clearNextStatus
+
+	ld hl, PartyMon1Level
+	ld bc, PartyMon2 - PartyMon1
+	ld e, 6
+.setNextLevel
+	ld a, 100
+	ld [hl], a
+	add hl, bc
+	dec e
+	jr nz, .setNextLevel
 	
 	ld hl, PartyEnd
 	ld [hl], $ff

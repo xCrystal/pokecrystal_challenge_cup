@@ -1833,5 +1833,13 @@ _OakText5: ; 1c1e51
 	para "NFE POKEMON" 
 	line "press START -"
 	cont "SELECT - LEFT."
+	
+	para "AUTO INPUT MODE"
+	line "can be turned on"
+	para "pressing START -"
+	line "SELECT - A,"
+	para "and turned off"
+	line "pressing START -"
+	cont "SELECT - B."	
 	prompt
 ; 1c1ec9
