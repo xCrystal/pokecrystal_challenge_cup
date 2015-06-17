@@ -1803,15 +1803,35 @@ _OakText4: ; 1c1de5
 ; 1c1e51
 
 _OakText5: ; 1c1e51
-	text "But we don't know"
-	line "everything about"
-	cont "#MON yet."
+	text "These are the"
+	line "instructions:"
 
-	para "There are still"
-	line "many mysteries to"
-	cont "solve."
+	para "To generate a"
+	line "random team WITH"
+	para "NO RESTRICTIONS,"
+	line "press START +"
+	cont "SELECT + RIGHT."
 
-	para "That's why I study"
-	line "#MON every day."
+	para "To generate a"
+	line "random team"
+	para "EXCLUDING TM/HM"
+	line "LEARNSETS,"
+	para "press START +"
+	line "SELECT + DOWN."
+	
+	para "To generate a"
+	line "random team"
+	para "EXCLUDING NFE"
+	line "POKEMON,"
+	para "press START +"
+	line "SELECT + UP."
+	
+	para "To generate a"
+	line "random team with"
+	para "EXCLUDING TM/HM"
+	line "LEARNSETS AND"
+	para "NFE POKEMON" 
+	line "press START +"
+	cont "SELECT + LEFT."
 	prompt
 ; 1c1ec9

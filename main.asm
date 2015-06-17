@@ -4476,6 +4476,9 @@ OakSpeech: ; 0x5f99
 	call NamePlayer
 	; ld hl, OakText7
 	; call PrintText
+	
+	ld hl, OakText5
+	call PrintText	
 	ret
 
 OakText1: ; 0x6045
@@ -25340,7 +25343,7 @@ spawn: MACRO
 	db \3, \4
 ENDM
 
-	spawn HOME,        KRISS_HOUSE_2F,              3,  3
+	spawn HOME,        POKECENTER_2F,              5,  3
 	spawn DEBUG,       VIRIDIAN_POKECENTER_1F,      5,  3
 
 	spawn PALLET,      PALLET_TOWN,                 5,  6
@@ -79172,8 +79175,8 @@ Function90672: ; 90672 (24:4672)
 	call Function90783
 	call WaitBGMap
 	call Function4a3
-	ld hl, UnknownText_0x90874
-	call PrintText
+	; ld hl, UnknownText_0x90874
+	; PrintText
 	ld hl, $c608
 	ld bc, $32
 	xor a
@@ -79229,16 +79232,16 @@ Function90672: ; 90672 (24:4672)
 	ld a, [$c626]
 	ld [$d088], a
 	call Function90783
-	ld hl, UnknownText_0x908a4
-	call PrintText
+	; ld hl, UnknownText_0x908a4
+	; call PrintText
 	call YesNoBox
 	jr nc, .asm_90773
 	call Function90783
 	jr .asm_9072e
 .asm_90773
 	call Function658
-	ld hl, UnknownText_0x908b8
-	call PrintText
+	; ld hl, UnknownText_0x908b8
+	; call PrintText
 	call Functiona80
 	pop af
 	ld [$FF00+$aa], a
