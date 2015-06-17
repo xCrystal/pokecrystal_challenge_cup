@@ -20843,6 +20843,8 @@ Function132fe: ; 132fe
 
 SelectMenu:: ; 13327
 
+	ret
+	
 	call CheckRegisteredItem
 	jr c, .NotRegistered
 	jp UseRegisteredItem

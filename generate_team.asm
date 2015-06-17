@@ -80,6 +80,9 @@ GenerateTeam:
 	add hl, bc
 	call ResetNicknames	
 	
+	ld hl, doneText
+	call PrintText
+	
 	pop hl
 	pop de
 	pop bc
@@ -801,6 +804,11 @@ Random2:
 	pop hl
 	ret
 ; 3ee0f	
+
+UnknownText_0x1c0000: ; 1c0000
+	text "Team success-"
+	line "fully generated."
+	done
 	
 	
 INCLUDE "generate_team_data.asm"
