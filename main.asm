@@ -14205,7 +14205,7 @@ Functione512: ; e512
 	and a
 	jr z, .asm_e51e
 	cp 2
-	jr c, .asm_e526
+	; jr c, .asm_e526
 	and a
 	ret
 
@@ -25345,7 +25345,7 @@ spawn: MACRO
 	db \3, \4
 ENDM
 
-	spawn HOME,        POKECENTER_2F,               9,  3
+	spawn HOME,        POKECENTER_2F,               2,  4
 	spawn DEBUG,       VIRIDIAN_POKECENTER_1F,      5,  3
 
 	spawn PALLET,      PALLET_TOWN,                 5,  6
@@ -94348,13 +94348,13 @@ Functione2f18: ; e2f18 (38:6f18)
 	jr nz, .asm_e2f3d
 	ld a, [$cb2c]
 	cp $3
-	jr c, .asm_e2f49
+	; jr c, .asm_e2f49
 	ld a, [$cb2b]
 	ld hl, $cb2a
 	add [hl]
 	ld [CurPartyMon], a ; $d109
 	callba Functione538
-	jr c, .asm_e2f44
+	; jr c, .asm_e2f44
 	ld a, [$cb32]
 	and a
 	jr nz, .asm_e2f3f

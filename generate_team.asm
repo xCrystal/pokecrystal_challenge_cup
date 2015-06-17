@@ -77,6 +77,10 @@ GenerateTeam:
 	call GenID
 	call GenHappiness
 	call GenEVsAndDVs
+	ld a, 100
+	ld [CurPartyLevel], a
+	ld a, 6
+	call CalcStats
 	call ResetExp
 
 ; Nicknames
@@ -107,6 +111,9 @@ GenerateTeam:
 	ret
 	
 
+CalcStats:
+	ret
+	
 ResetRNs: ; initialize the ten seeds to (pseudo) random numbers	
 	ld c, 10
 	ld hl, LinkBattleRNs
