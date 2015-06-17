@@ -12510,3 +12510,4 @@ CelebiBaseData2:: ; 0x53364
 	db %01000010
 	db %00000000
 	; end
+	

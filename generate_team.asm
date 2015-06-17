@@ -72,6 +72,7 @@ GenerateTeam:
 	inc a
 	cp 6
 	jr nz, .nextMon
+	call CalcPP
 	
 ; Other
 	call GenID
@@ -79,7 +80,6 @@ GenerateTeam:
 	call GenEVsAndDVs
 	ld a, 100
 	ld [CurPartyLevel], a
-	ld a, 6
 	call CalcStats
 	call ResetExp
 
@@ -111,9 +111,6 @@ GenerateTeam:
 	ret
 	
 
-CalcStats:
-	ret
-	
 ResetRNs: ; initialize the ten seeds to (pseudo) random numbers	
 	ld c, 10
 	ld hl, LinkBattleRNs
@@ -663,6 +660,35 @@ TMHMList:
 	db 0, 0, 0, 0
 
 
+CalcPP:
+	ld a, 6
+	ld [$dfff], a 
+	ld hl, PartyMon1Moves - (PartyMon2 - PartyMon1)
+	ld de, PartyMon1PP - (PartyMon2 - PartyMon1)
+	ld bc, PartyMon2 - PartyMon1
+.loop
+	push hl
+	ld h, d
+	ld l, e
+	add hl, bc
+	ld d, h
+	ld e, l
+	pop hl
+	add hl, bc
+	push hl
+	push de
+	push bc
+	predef FillPP
+	pop bc
+	pop de
+	pop hl
+	ld a, [$dfff]
+	dec a
+	ld [$dfff], a
+	jr nz, .loop
+	ret
+	
+	
 GenID:
 	ld hl, PartyMon1ID
 	ld de, PartyMon2 - PartyMon1	
@@ -727,6 +753,93 @@ GenEVsAndDVs:
 	dec b
 	jr nz, .nextEVsAndDVs
 	ret
+	
+
+CalcStats:
+	ld a, [PartyMon1Species]
+	ld hl, CurSpecies
+	ld [hl], a
+	call GetBaseData
+	ld de, PartyMon1MaxHP
+	ld hl, PartyMon1Exp + 2
+	ld b, 1
+	predef Functione167	
+	ld a, [PartyMon1MaxHP]
+	ld hl, PartyMon1HP
+	ld [hli], a
+	ld a, [PartyMon1MaxHP + 1]
+	ld [hl], a	
+	
+	ld a, [PartyMon2Species]
+	ld hl, CurSpecies
+	ld [hl], a
+	call GetBaseData	
+	ld de, PartyMon2MaxHP
+	ld hl, PartyMon2Exp + 2
+	ld b, 1
+	predef Functione167
+	ld a, [PartyMon2MaxHP]
+	ld hl, PartyMon2HP
+	ld [hli], a
+	ld a, [PartyMon2MaxHP + 1]
+	ld [hl], a		
+	
+	ld a, [PartyMon3Species]
+	ld hl, CurSpecies
+	ld [hl], a
+	call GetBaseData	
+	ld de, PartyMon3MaxHP
+	ld hl, PartyMon3Exp + 2
+	ld b, 1
+	predef Functione167
+	ld a, [PartyMon3MaxHP]
+	ld hl, PartyMon3HP
+	ld [hli], a
+	ld a, [PartyMon3MaxHP + 1]
+	ld [hl], a		
+	
+	ld a, [PartyMon4Species]
+	ld hl, CurSpecies
+	ld [hl], a
+	call GetBaseData	
+	ld de, PartyMon4MaxHP
+	ld hl, PartyMon4Exp + 2
+	ld b, 1
+	predef Functione167	
+	ld a, [PartyMon4MaxHP]
+	ld hl, PartyMon4HP
+	ld [hli], a
+	ld a, [PartyMon4MaxHP + 1]
+	ld [hl], a	
+	
+	ld a, [PartyMon5Species]
+	ld hl, CurSpecies
+	ld [hl], a	
+	call GetBaseData	
+	ld de, PartyMon5MaxHP
+	ld hl, PartyMon5Exp + 2
+	ld b, 1
+	predef Functione167
+	ld a, [PartyMon5MaxHP]
+	ld hl, PartyMon5HP
+	ld [hli], a
+	ld a, [PartyMon5MaxHP + 1]
+	ld [hl], a		
+	
+	ld a, [PartyMon6Species]
+	ld hl, CurSpecies
+	ld [hl], a
+	call GetBaseData	
+	ld de, PartyMon6MaxHP
+	ld hl, PartyMon6Exp + 2
+	ld b, 1
+	predef Functione167
+	ld a, [PartyMon6MaxHP]
+	ld hl, PartyMon6HP
+	ld [hli], a
+	ld a, [PartyMon6MaxHP + 1]
+	ld [hl], a		
+	ret	
 	
 	
 ResetExp:

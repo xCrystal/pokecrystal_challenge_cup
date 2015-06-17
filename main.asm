@@ -25345,7 +25345,7 @@ spawn: MACRO
 	db \3, \4
 ENDM
 
-	spawn HOME,        POKECENTER_2F,               2,  4
+	spawn HOME,        POKECENTER_2F,               9,  4
 	spawn DEBUG,       VIRIDIAN_POKECENTER_1F,      5,  3
 
 	spawn PALLET,      PALLET_TOWN,                 5,  6
