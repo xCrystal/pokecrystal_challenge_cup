@@ -25345,7 +25345,7 @@ spawn: MACRO
 	db \3, \4
 ENDM
 
-	spawn HOME,        POKECENTER_2F,              5,  3
+	spawn HOME,        POKECENTER_2F,               9,  3
 	spawn DEBUG,       VIRIDIAN_POKECENTER_1F,      5,  3
 
 	spawn PALLET,      PALLET_TOWN,                 5,  6
@@ -79236,7 +79236,7 @@ Function90672: ; 90672 (24:4672)
 	call Function90783
 	; ld hl, UnknownText_0x908a4
 	; call PrintText
-	call YesNoBox
+	; call YesNoBox
 	jr nc, .asm_90773
 	call Function90783
 	jr .asm_9072e
