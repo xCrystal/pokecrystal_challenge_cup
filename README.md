@@ -1,19 +1,27 @@
-# Pokémon Crystal
+# Pokemon "Random Team Generator" Crystal
 
-This is a disassembly of Pokémon Crystal.
+This is a small hack of Pokemon Crystal, based on the dissasembly of Pokemon Crystal, intended to be used only for link battling. This hack offers two unique features, allowing link battles with randomly generated Pokemon teams and the additional option of letting RNG be the only one who controls each of your actions during battle!
 
-The following rom is used as a base:
+Features:
+  * Random team generator. The game will automatically generate for you a team of six random level 100 Pokemon with:
+* Random moveset, with four moves randomly taken from the level, pre-evolution, breeding, and TM/HM -if chosen- learnsets
+* Random stat experience
+* Random DVs
+* Random Happiness
+* Random ID number
+  * Automatic input mode. This feature will make the game randomly generate button presses during battle overriding user input. The chances for each button press are:
+* A button: 25%
+* B button: 25%
+* Down: 12.5%
+* Up: 12.5 %
+* Left: 12.5 %
+* Right: 12.5%
 
-* Pokemon - Crystal Version (UE) (V1.0) [C][!].gbc `md5: 9f2922b235a5eeb78d65594e82ef5dde`
+Additionally, to speed up the process:
+* The intro has been cleaned up and reasonably sped up, removing unnecessary content and adding useful instructions
+* The starting map is the second floor of the Pokemon Center
+* The battle room will be available right away.
+* The ITEM and RUN options in link battles have been removed in order to make auto input link battles viable.
 
-To set up the repository, see [**INSTALL.md**](INSTALL.md).
-
-
-## See also
-
-* Disassembly of [**Pokémon Red/Blue**][pokered]
-* irc: **nucleus.kafuka.org** [**#skeetendo**][irc]
-
-[pokered]: https://github.com/iimarckus/pokered
-[irc]: https://kiwiirc.com/client/irc.nolimitzone.com/?#skeetendo
+More information and IPS patch download: http://www.pokecommunity.com/showthread.php?p=8802661
 
