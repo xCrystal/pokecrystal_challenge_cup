@@ -1,4 +1,4 @@
-# Pokemon "Random Team Generator" Crystal
+# Pokemon Crystal: Challenge Cup Version
 
 This is a small hack of Pokemon Crystal, based on the dissasembly of Pokemon Crystal, intended to be used only for link battling. This hack offers two unique features, allowing link battles with randomly generated Pokemon teams and the additional option of letting RNG be the only one who controls each of your actions during battle!
 
