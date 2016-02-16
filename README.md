@@ -2,7 +2,8 @@
 
 This is a small hack of Pokemon Crystal, based on the dissasembly of Pokemon Crystal, intended to be used only for link battling. This hack offers two unique features, allowing link battles with randomly generated Pokemon teams and the additional option of letting RNG be the only one who controls each of your actions during battle!
 
-Features:
+### Features
+
   * Random team generator. The game will automatically generate for you a team of six random level 100 Pokemon with:
 * Random moveset, with four moves randomly taken from the level, pre-evolution, breeding, and TM/HM -if chosen- learnsets
 * Random stat experience
@@ -23,5 +24,11 @@ Additionally, to speed up the process:
 * The battle room will be available right away.
 * The ITEM and RUN options in link battles have been removed in order to make auto input link battles viable.
 
-More information and IPS patch download: http://www.pokecommunity.com/showthread.php?p=8802661
+### Download
+
+https://github.com/xCrystal/pokecrystal_challenge_cup/releases/tag/v3.0
+
+### More information
+
+http://www.pokecommunity.com/showthread.php?p=8802661
 
