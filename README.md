@@ -4,13 +4,15 @@ This is a small hack of Pokemon Crystal, based on the dissasembly of Pokemon Cry
 
 ### Features
 
-  * Random team generator. The game will automatically generate for you a team of six random level 100 Pokemon with:
+#### Random team generator. 
+The game will automatically generate for you a team of six random level 100 Pokemon with:
 * Random moveset, with four moves randomly taken from the level, pre-evolution, breeding, and TM/HM -if chosen- learnsets
 * Random stat experience
 * Random DVs
 * Random Happiness
 * Random ID number
-  * Automatic input mode. This feature will make the game randomly generate button presses during battle overriding user input. The chances for each button press are:
+#### Automatic input mode. 
+This feature will make the game randomly generate button presses during battle overriding user input. The chances for each button press are:
 * A button: 25%
 * B button: 25%
 * Down: 12.5%
